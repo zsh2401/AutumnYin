@@ -1,35 +1,37 @@
 import React, { CSSProperties } from 'react'
 import "./StdLayout.css"
 export interface StdLayoutProps{
-    topBarTitle?:string;
+    headerTitle?:string;
+    bottomIndex?:-1 | 0 | 1 | 2 | 3;
 }
 export default class StdLayout extends React.Component<StdLayoutProps>{
     render(){
-        return <div style={boxStyle}>
-            <div style={topStyle}>{this.props.topBarTitle}</div>
-            <div style={centerStyle}>
-                <div className="container">
+        return <div>
+            <div style={headerContainerStyle}>
+                {this.props.headerTitle || "AYin.com 秋隐"}
+            </div>
+            <div style={childrenContainerStyle}>
                 {this.props.children}
-                </div>
-           </div>
-            <div className="bottomBarContainer" style={bottomStyle}>BOTTOM BAR</div>
+            </div>
+            <div className="safe-bar" style={footerContainerStyle}>
+                {this.props.bottomIndex || "unknown"}
+            </div>
         </div>
     }
 }
-const boxStyle:CSSProperties = {
-    height:'100%',
-    display: 'flex',
-    flexDirection: "column"
+const heightOfHeader = "56px"
+const heightOfFooter = "56px";
+const headerContainerStyle:CSSProperties = {
+    position:"fixed",
+    top:"0px",
+    height:"56px"
 }
-const topStyle:CSSProperties = {
-    flex: "0 0 auto",
+const childrenContainerStyle:CSSProperties = {
+    paddingTop: heightOfHeader,
+    paddingBottom:heightOfFooter
 }
-const centerStyle:CSSProperties = {
-    flex: "1 0 auto",
-    overflowY:"auto",
-    height:"70%",
-    position:"relative"
-}
-const bottomStyle:CSSProperties = {
-    flex: "0 0 auto",
+const footerContainerStyle:CSSProperties = {
+    position:"fixed",
+    bottom:"0px",
+    height:heightOfFooter
 }

@@ -1,5 +1,5 @@
 @supports (bottom: env(safe-area-inset-bottom)) {
-    .bottomBarContainer{
+    .safe-bar{
         padding-bottom: env(safe-area-inset-bottom);
     }
 }

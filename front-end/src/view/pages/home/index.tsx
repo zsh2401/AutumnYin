@@ -1,10 +1,10 @@
 import React, { CSSProperties } from 'react'
 import StdLayout from '../../layout/StdLayout'
-import ArticleList from '../../controls/ArticleListView'
+import ArticleListView from '../../controls/ArticleListView'
 export default class Index extends React.Component<any>{
     render(){
-        return <StdLayout topBarTitle="Home">
-            <ArticleList></ArticleList>
+        return <StdLayout  headerTitle="AYin.com 秋隐">
+            <ArticleListView/>
         </StdLayout>
     }
 }
