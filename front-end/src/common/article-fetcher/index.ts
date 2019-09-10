@@ -1,4 +1,4 @@
-import {IArticle} from '../../model/article'
+import IArticle from '../../model/IArticle'
 const API_PREFIX = "https://api.fnews.com/"
 export function fetchArticle(aid:string):Promise<IArticle>{
     return new Promise((resolve,reject)=>{
