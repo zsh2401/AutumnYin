@@ -1,0 +1,41 @@
+{
+  "name": "sz-framework-react",
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production --config webpack.config.ts",
+    "dev": "webpack-dev-server"
+  },
+  "author": "zsh2401",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/history": "^4.7.3",
+    "@types/html-webpack-plugin": "^3.2.1",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router": "^5.0.3",
+    "@types/react-router-dom": "^4.3.5",
+    "@types/webpack": "^4.39.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "cross-env": "^5.2.1",
+    "css-loader": "^3.2.0",
+    "deasync": "^0.1.15",
+    "html-webpack-plugin": "^3.2.0",
+    "react-router": "^5.0.1",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.4",
+    "ts-node": "^8.3.0",
+    "tsconfig-paths": "^3.8.0",
+    "typescript": "^3.6.2",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.7.2"
+  }
+}

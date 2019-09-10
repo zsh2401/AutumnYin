@@ -1,0 +1,10 @@
+
+@supports (bottom: env(safe-area-inset-bottom)) {
+    .safeArea{
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+.safeArea{
+    background: red;
+    height: 100%;
+}
