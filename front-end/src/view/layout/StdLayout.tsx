@@ -1,5 +1,7 @@
 import React, { CSSProperties } from 'react'
 import "./StdLayout.css"
+import { NavBar } from '../controls/NavBar';
+import Footer from '../controls/Footer'
 export interface StdLayoutProps{
     headerTitle?:string;
     bottomIndex?:-1 | 0 | 1 | 2 | 3;
@@ -7,31 +9,28 @@ export interface StdLayoutProps{
 export default class StdLayout extends React.Component<StdLayoutProps>{
     render(){
         return <div>
-            <div style={headerContainerStyle}>
-                {this.props.headerTitle || "AYin.com 秋隐"}
-            </div>
-            <div style={childrenContainerStyle}>
-                {this.props.children}
-            </div>
-            <div className="safe-bar" style={footerContainerStyle}>
-                {this.props.bottomIndex || "unknown"}
+            <NavBar></NavBar>
+            <div style={pageBoxStyle}>
+                <div style={childrenContainerStyle}>
+                    {this.props.children}
+                </div>
+                <div style={footerContainerStyle}>
+                    <Footer/>
+                </div>
             </div>
         </div>
     }
 }
-const heightOfHeader = "56px"
-const heightOfFooter = "56px";
-const headerContainerStyle:CSSProperties = {
-    position:"fixed",
-    top:"0px",
-    height:"56px"
+const pageBoxStyle:CSSProperties = {
+    display:"flex",
+    flexDirection:"column",
+    height:"100%",
+    width:"100%"
 }
 const childrenContainerStyle:CSSProperties = {
-    paddingTop: heightOfHeader,
-    paddingBottom:heightOfFooter
+    paddingTop: "70px",
+    flex:"1 0 auto"
 }
 const footerContainerStyle:CSSProperties = {
-    position:"fixed",
-    bottom:"0px",
-    height:heightOfFooter
+    flex:"0 0 auto"
 }

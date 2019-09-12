@@ -1,0 +1,11 @@
+.cb-menu-item{
+    border:none;
+    outline: none;
+    margin-right: 10px;
+}
+.cb-menu-item-active{
+    border:none;
+    outline: none;
+    margin-right: 10px;
+    text-decoration: underline;
+}
