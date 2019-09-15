@@ -13,9 +13,6 @@ export interface CategroiesTabSelectionChangedEventHandler{
     (categroyCode:string):void;
 }
 export default class CategroiesTab extends React.Component<ICategroiesTabProps>{
-    state = {
-        active:"default"
-    }
     onSelect(key:string){
         this.props.selectionChanged(key);
     }

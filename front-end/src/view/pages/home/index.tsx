@@ -9,7 +9,7 @@ export default class Index extends React.Component<any,any>{
     }
     componentWillMount(){
         this.setState({
-            crtCCode:"tec",
+            crtCCode:"default",
         });
     }
     onCTabUpdate(code:string){

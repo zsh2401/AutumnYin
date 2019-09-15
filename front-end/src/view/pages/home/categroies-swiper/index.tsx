@@ -19,16 +19,20 @@ export default class CategroyView extends React.Component<CategroyProps>{
     }
     componentDidMount(){
         this.swiper = new Swiper(".swiper-container")
+        this.slideToCode(this.props.selected);
         this.swiper.on("slideChange",()=>{
             this.props.onCategoryChanged(this.codes[this.swiper.realIndex])
         })
     }
     shouldComponentUpdate(nextProps:CategroyProps,nextState:any){
+        this.slideToCode(nextProps.selected);
+        return false;
+    }
+    slideToCode(selectedCode:string){
         let index = this.codes.findIndex(code=>{
-            return code == nextProps.selected
+            return code == selectedCode
         })
         this.swiper.slideTo(index);
-        return false;
     }
     render(){
         let cViews = []

@@ -19,7 +19,6 @@ export default class MeScroller extends React.Component<MeScrollerProps>{
         }
     }
     componentDidMount(){
-        console.log("wtf");
         this.mescroll = new MeScroll(this.id, {  
             down: {callback: ()=>this.pulldownHandler() },
             up:{use:false}
