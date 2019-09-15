@@ -18,7 +18,9 @@ export default class CategroyView extends React.Component<CategroyProps>{
         this.codes = getCodesOnly();
     }
     componentDidMount(){
-        this.swiper = new Swiper(".swiper-container")
+        this.swiper = new Swiper(".swiper-container",{
+            // loop:true,
+        })
         this.slideToCode(this.props.selected);
         this.swiper.on("slideChange",()=>{
             this.props.onCategoryChanged(this.codes[this.swiper.realIndex])
