@@ -2,7 +2,8 @@ import React from 'react'
 import Swiper from 'swiper'
 import idg from '../../../../common/id-generator'
 import "swiper/dist/css/swiper.min.css"
-import cm,{getCodesOnly} from '../../../../common/categroies-manager'
+import cview from '../categroy-view'
+import {getCodesOnly} from '../../../../common/categroies-manager'
 export interface CategroyProps{
     selected:string;
     onCategoryChanged:(code:string)=>void;
@@ -31,8 +32,8 @@ export default class CategroyView extends React.Component<CategroyProps>{
     }
     render(){
         let cViews = []
-        getCodesOnly().forEach(code=>cViews.push(cViewFactory(code)))
-        return<div className="swiper-container">
+        getCodesOnly().forEach(code=>cViews.push(cview(code)))
+        return<div className="swiper-container" style={{position:"fixed",height:"100%",width:"100%"}}>
             <div className="swiper-wrapper">
             {
                 cViews.map((el)=>{
@@ -41,13 +42,5 @@ export default class CategroyView extends React.Component<CategroyProps>{
             }
             </div>
         </div>
-    }
-}
-function cViewFactory(code:string){
-    switch(code){
-        case "default":
-            return <div>{code}</div>
-        default:
-            return <div>{code}</div>
     }
 }

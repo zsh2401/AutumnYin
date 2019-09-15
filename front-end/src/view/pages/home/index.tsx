@@ -1,8 +1,8 @@
 import React, { CSSProperties } from 'react'
 import StdLayout from '../../layout/StdLayout'
-import CategroiesBar from './CategoriesTab'
-import MeScroller from './MeScroller'
-import CategroyView from './CategroyView';
+import CategroiesBar from './categroies-tab'
+import CategroyView from './categroies-swiper';
+import MeScroller from './me-scroller';
 export default class Index extends React.Component<any,any>{
     constructor(props){
         super(props);

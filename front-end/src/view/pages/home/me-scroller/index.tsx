@@ -1,5 +1,5 @@
 import React from 'react'
-import idg from '../../../common/id-generator'
+import idg from '../../../../common/id-generator'
 import MeScroll from 'mescroll'
 import "mescroll/src/mescroll.min.css"
 export interface MeScrollerProps{
@@ -19,6 +19,7 @@ export default class MeScroller extends React.Component<MeScrollerProps>{
         }
     }
     componentDidMount(){
+        console.log("wtf");
         this.mescroll = new MeScroll(this.id, {  
             down: {callback: ()=>this.pulldownHandler() },
             up:{use:false}
