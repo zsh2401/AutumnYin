@@ -10,22 +10,19 @@
   "author": "zsh2401",
   "license": "ISC",
   "dependencies": {
-    "@types/marked": "^0.6.5",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "marked": "^0.7.0",
     "mescroll": "0.0.3",
-    "minirefresh": "^2.0.2",
     "popper.js": "^1.15.0",
-    "rc-tabs": "^9.6.7",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-horizontal-scrolling-menu": "^0.7.3",
     "react-router-dom": "^5.0.1",
-    "react-swipeable-tabs": "^2.2.0",
     "swiper": "^4.5.1"
   },
   "devDependencies": {
+    "@types/marked": "^0.6.5",
     "@types/history": "^4.7.3",
     "@types/html-webpack-plugin": "^3.2.1",
     "@types/jquery": "^3.3.31",
