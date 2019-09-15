@@ -13,10 +13,12 @@ export interface PullDownEventArgs{
 export default class MeScroller extends React.Component<MeScrollerProps>{
     private readonly id = idg();
     private mescroll:any;
+    private isFirstPullDown:boolean = true;
     private pulldownHandler(){
-        if(this.props.onPullDown){
+        if(!this.isFirstPullDown && this.props.onPullDown){ 
             this.props.onPullDown({endSucess:()=>this.mescroll.endSuccess(),endError:()=>this.mescroll.endErr()})
         }
+        this.isFirstPullDown = false;
     }
     componentDidMount(){
         this.mescroll = new MeScroll(this.id, {  
