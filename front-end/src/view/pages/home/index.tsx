@@ -1,21 +1,31 @@
 import React, { CSSProperties } from 'react'
 import StdLayout from '../../layout/StdLayout'
 import CategroiesBar from './CategoriesTab'
-import { ViewProvider } from './categroy-views';
+import MeScroller from './MeScroller'
+import CategroyView from './CategroyView';
 export default class Index extends React.Component<any,any>{
-    private readonly provider:ViewProvider = new ViewProvider();
     constructor(props){
         super(props);
     }
     componentWillMount(){
         this.setState({
-            categoryCode:"default"
+            crtCCode:"tec",
         });
+    }
+    onCTabUpdate(code:string){
+        this.setState({
+            crtCCode:code
+        })
+    }
+    onCViewUpdate(code:string){
+        this.setState({
+            crtCCode:code
+        })
     }
     render(){
         return <StdLayout headerTitle="AuTuMnYIN.COM 秋隐">
-            <CategroiesBar categroies={{"zed":"单言","default":"最新","tec":"科技"}}  selectionChanged={(value)=>this.setState({categoryCode:value})}/>
-            {this.provider.get(this.state.categoryCode)}
+            <CategroiesBar selected={this.state.crtCCode} selectionChanged={(c)=>this.onCTabUpdate(c)}/>
+            <CategroyView selected={this.state.crtCCode} onCategoryChanged={(c)=>this.onCViewUpdate(c)}></CategroyView>
         </StdLayout>
     }
 }

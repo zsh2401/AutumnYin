@@ -14,9 +14,6 @@ export default class StdLayout extends React.Component<StdLayoutProps>{
                 <div style={childrenContainerStyle}>
                     {this.props.children}
                 </div>
-                <div style={footerContainerStyle}>
-                    <Footer/>
-                </div>
             </div>
         </div>
     }

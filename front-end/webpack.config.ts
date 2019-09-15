@@ -21,7 +21,7 @@ const config:webpack.Configuration = {
 	module: {
 		rules: [
 			{ test: /\.ts(x?)$/, use: 'ts-loader' },
-			{ test: /\.css$/, use: [
+			{ test: /\.(css)$/, use: [
 				{
 					loader: "style-loader"
 				}, {
@@ -29,9 +29,17 @@ const config:webpack.Configuration = {
 				}
 				] 
 			},
+			{
+				test: /\.scss$/,
+				use: [
+					"style-loader", // 将 JS 字符串生成为 style 节点
+					"css-loader", // 将 CSS 转化成 CommonJS 模块
+					"sass-loader" // 将 Sass 编译成 CSS，默认使用 Node Sass
+				]
+			},
 			{ test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/, 
 				use: {
-						loader:'url-loader?limit=100000&name=images/[name]_[hash:8].[ext]'
+					loader:'url-loader?limit=100000&name=images/[name]_[hash:8].[ext]'
 				}
 			},
 		]
