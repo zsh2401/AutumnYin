@@ -1,10 +1,11 @@
 import React from 'react'
 import MeScroller from '../me-scroller'
-export default function factory(code:string){
-    switch(code){
+import NormalCategoryView from './NormalCategoryView'
+export default function factory(categroyCode:string){
+    switch(categroyCode){
         case "default":
-            return <MeScroller><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1><h1>{code}</h1></MeScroller>
+            return <MeScroller>home</MeScroller>
         default:
-            return <MeScroller onPullDown={(e)=>setTimeout(()=>{alert("wdnmd");e.endSucess()},2000)}><div>{code}</div></MeScroller>
+            return <NormalCategoryView categroyCode={categroyCode}/>
     }
 }

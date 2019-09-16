@@ -4,7 +4,7 @@ import MeScroll from 'mescroll'
 import "mescroll/src/mescroll.min.css"
 export interface MeScrollerProps{
     onPullDown?:(e:PullDownEventArgs)=>void;
-    mescrollReceiver?:(mescroll:any)=>void;
+    created?:(mescroll:any)=>void;
 }
 export interface PullDownEventArgs{
     endSucess:Function;
@@ -25,8 +25,8 @@ export default class MeScroller extends React.Component<MeScrollerProps>{
             down: {callback: ()=>this.pulldownHandler() },
             up:{use:false}
         });
-        if(this.props.mescrollReceiver){
-            this.props.mescrollReceiver(this.mescroll);
+        if(this.props.created){
+            this.props.created(this.mescroll);
         }
     }
     render(){
