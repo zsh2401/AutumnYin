@@ -8,7 +8,7 @@ export default class NormalCategoryView<TModel> extends React.Component<NormalCa
     private i:any = idg();
     private mescrollObj:any;
     private pulldownHandler(e:PullDownEventArgs){
-        refresh().then
+        // refresh().then
     }
     private async refresh():Promise<TModel>{
         return new Promise((resolve,reject)=>{
@@ -21,7 +21,9 @@ export default class NormalCategoryView<TModel> extends React.Component<NormalCa
     render(){
         let that = this;
         return <MeScroller onPullDown={(e)=>that.pulldownHandler(e)} created={(me)=>that.mescrollObj = me}>
-            {this.props.categroyCode}
+            <div className="container">
+                {this.props.categroyCode}
+            </div>
         </MeScroller>
     }
 }
