@@ -1,11 +1,11 @@
 import React from 'react'
-import MeScroller from '../me-scroller'
 import NormalCategoryView from './NormalCategoryView'
+import HomeView from './HomeView';
 export default function factory(categroyCode:string){
     switch(categroyCode){
         case "default":
-            return <MeScroller>home</MeScroller>
+            return <HomeView/>
         default:
-            return <NormalCategoryView categroyCode={categroyCode}/>
+            return <HomeView/>
     }
 }

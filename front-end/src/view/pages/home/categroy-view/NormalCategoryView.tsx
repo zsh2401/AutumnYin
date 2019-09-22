@@ -2,6 +2,7 @@ import React from 'react'
 import idg from '../../../../common/id-generator'
 import * as nm from '../../../../common/news-manager'
 import MeScroller,{PullDownEventArgs} from '../me-scroller'
+import RMeScroll from '../../../controls/react-mescroll';
 export interface NormalCategoryViewProps{
     categroyCode:string;
 }
@@ -19,9 +20,9 @@ export default class NormalCategoryView extends React.Component<NormalCategoryVi
     private i:any = idg();
     private mescrollObj:any;
     private pulldownHandler(e:PullDownEventArgs){
-<<<<<<< HEAD
-        // refresh().then
-=======
+        this.doRefresh(e.endError,e.endSucess);
+    }
+    private doRefresh(endErr:Function,endSuccess:Function){
         nm.getIndex({
             categroyCode:this.props.categroyCode,
             count:10,
@@ -30,11 +31,10 @@ export default class NormalCategoryView extends React.Component<NormalCategoryVi
             this.setState({
                 data:_data
             });
-            e.endSucess();
-        }).catch(err=>e.endError())
->>>>>>> d901094a36325105617a56b27bd90296902a6ad0
+            endSuccess();
+        }).catch(err=>{endErr();console.error("can not refresh: " + err)})
     }
-    private async refresh():Promise<NewsBrief[]>{
+    private async doAppend(){
         return new Promise((resolve,reject)=>{
             setTimeout(()=>{
                 resolve([
@@ -51,16 +51,10 @@ export default class NormalCategoryView extends React.Component<NormalCategoryVi
     }
     render(){
         let that = this;
-        return <MeScroller onPullDown={(e)=>that.pulldownHandler(e)} created={(me)=>that.mescrollObj = me}>
-<<<<<<< HEAD
-            <div className="container">
-                {this.props.categroyCode}
-            </div>
-=======
+        return <RMeScroll downCallback={()=>that.pulldownHandler(e)} created={(me)=>that.mescrollObj = me}>
             {this.state.data.map(e=>{
                 return <div key={e.id}>{e.title}</div>
             })}
->>>>>>> d901094a36325105617a56b27bd90296902a6ad0
-        </MeScroller>
+        </RMeScroll>
     }
 }
