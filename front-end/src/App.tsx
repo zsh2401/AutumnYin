@@ -5,7 +5,7 @@ import "jquery/dist/jquery"
 
 //bootstrap
 import "bootstrap"
-import "./view/bootstrap-themes/simplex/_entry.scss"
+import "./view/css/bs-simplex/_entry.scss"
 
 import "./App.css"
 

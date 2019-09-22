@@ -1,5 +1,5 @@
 import IArticle from '../../model/IArticle'
-const API_PREFIX = "https://api.fnews.com/"
+const API_PREFIX = "https://api.yuxyin.com/"
 export function fetchArticle(aid:string):Promise<IArticle>{
     return new Promise((resolve,reject)=>{
         fetch(getUrlById(aid))
