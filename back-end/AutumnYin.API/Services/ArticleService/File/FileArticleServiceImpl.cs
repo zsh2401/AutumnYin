@@ -11,7 +11,7 @@ namespace AutumnYin.API.Services.ArticleService.File
 {
     public class FileArticleServiceImpl : IArticleService
     {
-        private const string IMG_RESOURCE_SERVER_PREFIX_FMT = "http://api.auxyin.com/article/aimg/{0}/";
+        private const string IMG_RESOURCE_SERVER_PREFIX_FMT = "http://dream.zsh2401.top:9527/article/aimg/{0}/";
         private readonly static Regex imgRegex = new Regex(@"\!\[(.*)\]\((?!http)(.+)\)", RegexOptions.Multiline | RegexOptions.Compiled);
         private const string IMG_RESOURCE_REPLACE_FMT = "![$1]({0}$2)";
         private readonly DirectoryInfo articlesDir;
