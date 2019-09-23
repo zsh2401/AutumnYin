@@ -1,0 +1,10 @@
+.content-view-box{
+
+}
+.content-view-box-article img{
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

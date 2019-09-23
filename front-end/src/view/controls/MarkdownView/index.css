@@ -1,0 +1,12 @@
+.md-view-box img{
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.md-view-box{
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}

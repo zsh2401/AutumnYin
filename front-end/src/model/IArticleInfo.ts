@@ -2,7 +2,8 @@ export default interface IArticleInfo{
     id:string;
     title:string;
     author:string;
-    date:string;
+    crt_time:string;
+    img:string;
+    summary:string;
     categroy:string;
-    tags:string[];
 }
