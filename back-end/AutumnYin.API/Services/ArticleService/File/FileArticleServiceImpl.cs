@@ -18,7 +18,7 @@ namespace AutumnYin.API.Services.ArticleService.File
         public FileArticleServiceImpl() {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                articlesDir = new DirectoryInfo(@"~/auxyin-articles/");
+                articlesDir = new DirectoryInfo(@"/root/auxyin-articles/");
             }
             else {
                 articlesDir = new DirectoryInfo(@"D:\Source\AutumnYin\articles-fake-data");
