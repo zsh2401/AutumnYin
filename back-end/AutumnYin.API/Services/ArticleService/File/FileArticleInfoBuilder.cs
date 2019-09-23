@@ -29,7 +29,19 @@ namespace AutumnYin.API.Services.ArticleService.File
             result.Id = dirInfo.Name;
             InitCreationTime(result);
             InitSummary(result);
+            CompleteImgUrl(result);
             return result;
+        }
+        private void CompleteImgUrl(ArticleInfo info)
+        {
+            if (info.ImgUrl == null)
+            {
+                info.ImgUrl = null;
+            }
+            else if (!(info.ImgUrl.StartsWith("http://") || info.ImgUrl.StartsWith("https://")))
+            {
+                info.ImgUrl = string.Format("http://dream.zsh2401.top:9527/article/aimg/{0}/{1}", info.Id, info.ImgUrl);
+            }
         }
         private void InitCreationTime(ArticleInfo info)
         {

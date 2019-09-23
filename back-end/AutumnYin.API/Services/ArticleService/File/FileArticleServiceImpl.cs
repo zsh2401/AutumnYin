@@ -54,7 +54,11 @@ namespace AutumnYin.API.Services.ArticleService.File
                                           where categroyCode == "all" || categroyCode == info.CategroyCode
                                           select info;
 
-            var result = orderedAndFiltedByCCode.Skip(--startAt).Take(size);
+            var visiable = from info in orderedAndFiltedByCCode
+                           where !info.Hide
+                           select info;
+
+            var result = visiable.Skip(startAt).Take(size);
             return result;
         }
         public ArticleInfo GetInfoById(string id)
