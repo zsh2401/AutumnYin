@@ -11,5 +11,6 @@ namespace AutumnYin.API.Services.ArticleService
         string GetContentById(string id);
         IEnumerable<ArticleInfo>  GetIndex(string categroyCode,int startAt,int size);
         ArticleInfo GetInfoById(string id);
+        string GetImagePath(string id, string fileName);
     }
 }

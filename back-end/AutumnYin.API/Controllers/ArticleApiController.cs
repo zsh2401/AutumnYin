@@ -38,10 +38,10 @@ namespace AutumnYin.API.Controllers
         {
             return articleService.GetContentById(id);
         }
-        [HttpGet("content/{id}/{path}")]
-        public ActionResult<string> ContentResourceGet(string path)
+        [HttpGet("aimg/{id}/{fileName}")]
+        public ActionResult ContentResourceGet(string id,string fileName)
         {
-            return path;
+            return new PhysicalFileResult(articleService.GetImagePath(id,fileName),"image/jpeg");
         }
     }
 }

@@ -10,7 +10,7 @@ namespace AutumnYin.API.Services.ArticleService.File
 {
     public class FileArticleServiceImpl : IArticleService
     {
-        private const string IMG_RESOURCE_SERVER_PREFIX_FMT = "http://api.auxyin.com/article/content/{0}/";
+        private const string IMG_RESOURCE_SERVER_PREFIX_FMT = "http://api.auxyin.com/article/aimg/{0}/";
         private readonly static Regex imgRegex = new Regex(@"\!\[(.*)\]\((?!http)(.+)\)", RegexOptions.Multiline | RegexOptions.Compiled);
         private const string IMG_RESOURCE_REPLACE_FMT = "![$1]({0}$2)";
         private DirectoryInfo articlesDir = new DirectoryInfo(@"D:\Source\AutumnYin\articles-fake-data");
@@ -19,14 +19,18 @@ namespace AutumnYin.API.Services.ArticleService.File
             string path = Path.Combine(articlesDir.FullName, id, "index.md");
             using (var textReader = new FileInfo(path).OpenText())
             {
-                return ReplaceImgString(textReader.ReadToEnd(),id);
+                return ReplaceImgString(textReader.ReadToEnd(), id);
             }
         }
-        private static string ReplaceImgString(string markdownText,string aid)
+        private static string ReplaceImgString(string markdownText, string aid)
         {
             string url = string.Format(IMG_RESOURCE_SERVER_PREFIX_FMT, aid);
             string replace = string.Format(IMG_RESOURCE_REPLACE_FMT, url);
-            return imgRegex.Replace(markdownText,replace);
+            return imgRegex.Replace(markdownText, replace);
+        }
+        public string GetImagePath(string id, string fileName)
+        {
+            return Path.Combine(articlesDir.FullName, id,fileName);
         }
 
         public IEnumerable<ArticleInfo> GetIndex(string categroyCode, int startAt, int size)
