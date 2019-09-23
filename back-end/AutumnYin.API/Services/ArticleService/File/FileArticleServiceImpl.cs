@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
 namespace AutumnYin.API.Services.ArticleService.File
@@ -13,7 +14,17 @@ namespace AutumnYin.API.Services.ArticleService.File
         private const string IMG_RESOURCE_SERVER_PREFIX_FMT = "http://api.auxyin.com/article/aimg/{0}/";
         private readonly static Regex imgRegex = new Regex(@"\!\[(.*)\]\((?!http)(.+)\)", RegexOptions.Multiline | RegexOptions.Compiled);
         private const string IMG_RESOURCE_REPLACE_FMT = "![$1]({0}$2)";
-        private DirectoryInfo articlesDir = new DirectoryInfo(@"D:\Source\AutumnYin\articles-fake-data");
+        private readonly DirectoryInfo articlesDir;
+        public FileArticleServiceImpl() {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                articlesDir = new DirectoryInfo(@"~/auxyin-articles/");
+            }
+            else {
+                articlesDir = new DirectoryInfo(@"D:\Source\AutumnYin\articles-fake-data");
+            }
+               
+        }
         public string GetContentById(string id)
         {
             string path = Path.Combine(articlesDir.FullName, id, "index.md");
