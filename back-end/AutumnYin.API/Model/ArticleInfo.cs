@@ -15,8 +15,10 @@ namespace AutumnYin.API.Model
         public string Title { get; set; } = "无名字文章";
         [JsonProperty("author")]
         public string Author { get; set; } = "佚名";
+        [JsonProperty("category")]
+        public string CategroyCode { get; set; } = "yy";
         [JsonProperty("crt_time")]
-        public int[] CreationTime { get; set; } = new int[] { 1999, 11, 25, 11, 25 };
+        public string CreationTime { get; set; } = null;
         [JsonProperty("comment")]
         public bool EnableComment { get; set; } = true;
         [JsonProperty("summary")]

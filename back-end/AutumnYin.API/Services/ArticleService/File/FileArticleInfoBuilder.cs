@@ -1,5 +1,6 @@
 ﻿using AutumnYin.API.Model;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,22 +27,34 @@ namespace AutumnYin.API.Services.ArticleService.File
                 result = JsonConvert.DeserializeObject<ArticleInfo>(reader.ReadToEnd());
             }
             result.Id = dirInfo.Name;
-            if (result.Summary == null)
+            InitCreationTime(result);
+            InitSummary(result);
+            return result;
+        }
+        private void InitCreationTime(ArticleInfo info)
+        {
+            if (info.CreationTime == null)
+            {
+                info.CreationTime = dirInfo.CreationTime.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+        }
+        private void InitSummary(ArticleInfo info)
+        {
+            if (info.Summary == null)
             {
                 using (var reader = new FileInfo(Path.Combine(dirInfo.FullName, "index.md")).OpenText())
                 {
                     var content = reader.ReadToEnd();
                     if (content.Length > 15)
                     {
-                        result.Summary = content.Substring(0, 15) + "...";
+                        info.Summary = content.Substring(0, 15) + "...";
                     }
                     else
                     {
-                        result.Summary = content.Substring(0, content.Length - 1);
+                        info.Summary = content.Substring(0, content.Length - 1);
                     }
                 }
             }
-            return result;
         }
     }
 }
