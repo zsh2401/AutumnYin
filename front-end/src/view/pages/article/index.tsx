@@ -55,7 +55,7 @@ export default class ArticleView extends React.Component<any,ArticleViewState>{
                 content = <LoadingView/>
                 break;
             case "ok":
-                content = <ContentView info={this.state.ainfo} markdownContent={this.state.content}></ContentView>
+                content = <ContentView info={this.state.ainfo} markdownContent={this.state.content}/>
                 break;
             default:
                 content = <div>Error</div>
