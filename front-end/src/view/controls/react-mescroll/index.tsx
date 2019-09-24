@@ -11,13 +11,13 @@ export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollS
         let up:any = {use:false}
         if(this.props.upCallback){
             up = {
-                callback:(page)=>this.upCallback(page)
+                callback:(page)=>this.upCallback(page),
             }
         }
         //@ts-ignore
         this.mescrollObj = new MeScroll(this.meScrollDiv,
             {
-            down:{callback:()=>this.downCallback()},
+            down:{callback:()=>this.downCallback(),auto:false},
             up:up,
             }
         );
@@ -32,6 +32,9 @@ export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollS
             this.props.upCallback(page);
         }
     }
+    public triggerDownScroll(){
+        this.mescrollObj.triggerDownScroll();
+    }
     public endError(){
         this.mescrollObj.endErr();
     }
@@ -39,7 +42,7 @@ export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollS
         this.mescrollObj.endSuccess();
     }
     render(){
-        return <div className="mescroll"  style={{height:"100%",position:"fixed"}} ref={_div=>this.meScrollDiv = _div}>
+        return <div className="mescroll"  style={{height:this.props.height || "100%",position:"fixed"}} ref={_div=>this.meScrollDiv = _div}>
             <div>
                 {this.props.children}
             </div>
