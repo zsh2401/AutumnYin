@@ -3,7 +3,7 @@ import Swiper from 'swiper'
 import "swiper/dist/css/swiper.min.css"
 import RSwiperSlide from './r-swiper-slide';
 export interface RSwiperProps{
-    children:React.ReactElement[];
+    children:React.ReactElement<RSwiperSlide>[];
     slideChange?:(slideIndex:number)=>void;
     selectIndex?:number;
 }
@@ -17,12 +17,15 @@ export interface Slide{
 export default class RSwiper extends React.Component<RSwiperProps,RSwiperState>{
     public swiper:Swiper = null;
     componentWillMount(){
-        let slides:Slide[] = this.props.children.map(el=>{
+        let selectIndex = this.props.selectIndex || 0;
+        let slides:Slide[] = this.props.children.map((el,index)=>{
             let result:Slide = {
                 //@ts-ignore
-                flag:el.props.lazy ? "waiting" : "loaded",
-                element:el
+                flag:(!el.props.lazy) || selectIndex == index ? "loaded" : "waiting",
+                //@ts-ignore
+                element:(!el.props.lazy) || selectIndex == index ? el : null,
             }
+            console.log(selectIndex+ "/" + index);
             return result;
         });
         this.setState({
@@ -35,6 +38,9 @@ export default class RSwiper extends React.Component<RSwiperProps,RSwiperState>{
             this.state.slides[index].flag = "loaded";
         }
     }
+    componentDidUpdate(){
+        this.swiper.slideTo(this.props.selectIndex || 0);
+    }
     componentDidMount(){
         this.swiper = new Swiper(this.refs.mainDiv as HTMLDivElement,{
             initialSlide:this.props.selectIndex || 0
@@ -46,7 +52,7 @@ export default class RSwiper extends React.Component<RSwiperProps,RSwiperState>{
                 this.props.slideChange(index);
             }
         })
-        this.displaySlide(this.props.selectIndex || 0);
+        this.swiper.slideTo(this.props.selectIndex || 0);
     }
     render(){
         return <div ref="mainDiv" className="swiper-container h-100">

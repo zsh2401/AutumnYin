@@ -8,7 +8,6 @@ export interface ISelectTabProps{
 }
 export default class SelectTab extends React.Component<ISelectTabProps>{
     onSelect(key:string){
-        console.log(key);
         this.props.selectionChanged(parseInt(key));
     }
     render(){

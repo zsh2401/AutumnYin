@@ -33,7 +33,8 @@ export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollS
         }
     }
     public triggerDownScroll(){
-        this.mescrollObj.triggerDownScroll();
+        setTimeout(()=>this.mescrollObj.triggerDownScroll(),500);
+        
     }
     public endError(){
         this.mescrollObj.endErr();
@@ -42,7 +43,7 @@ export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollS
         this.mescrollObj.endSuccess();
     }
     render(){
-        return <div className="mescroll"  style={{height:this.props.height || "100%",position:"fixed"}} ref={_div=>this.meScrollDiv = _div}>
+        return <div className="mescroll"  style={{height:"100%",position:"fixed"}} ref={_div=>this.meScrollDiv = _div}>
             <div>
                 {this.props.children}
             </div>
