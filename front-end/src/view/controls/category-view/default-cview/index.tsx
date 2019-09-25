@@ -2,8 +2,7 @@ import React from 'react'
 import RMeScroll from '../../react-mescroll';
 import IArticleInfo from '../../../../model/IArticleInfo';
 import ArticleCard from '../../ArticleCard';
-import ArticleFetcher,{instance} from '../../../../common/article-fetcher';
-import Notifications, {notify} from 'react-notify-toast';
+import {instance} from '../../../../common/article-fetcher';
 export interface DefaultCategoryViewProps{
     categoryCode:string;
 }
@@ -17,7 +16,7 @@ export default class DefaultCategoryView extends React.Component<DefaultCategory
     }
     componentWillMount(){
         this.setState({
-            articles:[],
+            articles:[null,null,null,null,null,null,null,null,null,null,null,null,null],
             state:"loading"
         });
     }
@@ -25,32 +24,27 @@ export default class DefaultCategoryView extends React.Component<DefaultCategory
         this.rMeScroll.triggerDownScroll();
     }
     down(){
-        instance().fetchArticleIndex(0,10,this.props.categoryCode)
+        instance().fetchArticleIndex(0,5,this.props.categoryCode)
         .then((data:IArticleInfo[])=>{this.setState({articles:data});this.setState({state:"ok"})})
         .catch(err=>{console.error(err);this.setState({state:"error"})})
         .finally(()=>this.rMeScroll.endSuccess());
     }
+    up(){
+        instance().fetchArticleIndex(this.state.articles.length,10,this.props.categoryCode)
+        .then((data:IArticleInfo[])=>{
+            this.setState({articles:this.state.articles.concat(data)});
+            this.setState({state:"ok"})
+            this.rMeScroll.endBySize(data.length);
+        })
+        .catch(err=>{console.error(err);this.setState({state:"error"})})
+    }
     render(){
-        let view = null;
-        switch(this.state.state){
-            case "loading":
-                view=  <div>Loading</div>
-                break;
-            case "error":
-                view=  <div>Error</div>
-                break;
-            default:
-                view = this.state.articles.map((article)=>{
-                    return <ArticleCard key={article.id} info={article}/>
-                })
-                if(this.state.articles.length == 0){
-                    view = "空空如也"
-                }
-                break;
-        }
-
-        return <RMeScroll ref="mescroll" downCallback={()=>{this.down()}}>
-            <div className="container">{view}</div>
+        let key:number = 0;
+        return <RMeScroll ref="mescroll" downCallback={()=>{this.down()}} upCallback={()=>{this.up()}}>
+            <div className="container">{this.state.articles.map((article)=>{
+                    return <ArticleCard key={article ? article.id : key++} info={article}/>
+                })}
+            </div>
         </RMeScroll>
     }
 }

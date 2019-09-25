@@ -10,8 +10,9 @@
   "author": "zsh2401",
   "license": "ISC",
   "dependencies": {
+    "ant-design": "^1.0.0",
+    "antd": "^3.23.4",
     "bootstrap": "^4.3.1",
-    "bootstrap-notify": "^3.1.3",
     "jquery": "^3.4.1",
     "leancloud-storage": "^3.15.0",
     "marked": "^0.7.0",
@@ -20,7 +21,7 @@
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.9.0",
     "react-horizontal-scrolling-menu": "^0.7.3",
-    "react-notify-toast": "^0.5.0",
+    "react-live-route": "^3.1.6",
     "react-router-dom": "^5.0.1",
     "swiper": "^4.5.1",
     "valine": "^1.3.10"

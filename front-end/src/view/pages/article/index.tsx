@@ -1,70 +1,44 @@
 import React from 'react'
-import marked from 'marked'
 import StdLayout from '../../layout/StdLayout';
-import MarkdownView from '../../controls/MarkdownView';
 import {instance} from '../../../common/article-fetcher'
 import "./index.css"
 import IArticleInfo from '../../../model/IArticleInfo';
-import LoadingView from './LoadingView';
-import { ContentView } from './ContentView';
-export interface ArticleViewState{
+import ValineComment from '../../controls/ValineComment';
+import ArticleView from './ArticleView';
+export interface ArticlePageState{
     content:string;
     ainfo:IArticleInfo;
-    status:"loading" | "ok" | "error";
-    id:string;
 }
-export default class ArticleView extends React.Component<any,ArticleViewState>{
+export default class ArticlePage extends React.Component<any,ArticlePageState>{
     componentWillMount(){
         this.setState({
             content:null,
             ainfo:null,
-            status:"loading",
-            id:this.props.match.params.id
         });
     }
     componentDidMount(){
-        instance().fetchArticleInfoById(this.state.id).then(data=>{
+        let id = this.props.match.params.id;
+        instance().fetchArticleInfoById(id).then(data=>{
             this.setState({
                 ainfo:data
             });
-            if(this.state.content){
-                this.setState({
-                    status:"ok"
-                });
-            }
         }).catch(err=>{
-            console.error("wtf" + err);
+            console.error(err);
         });
-        instance().fetchArticleContentById(this.state.id).then((text)=>{
+        instance().fetchArticleContentById(id).then((text)=>{
             this.setState({
                 content:text
             });
-            if(this.state.ainfo){
-                this.setState({
-                    status:"ok"
-                });
-            }
         }).catch(err=>{
-            console.error("wtf" + err);
+            console.error(err);
         });
     }
     render(){
-        let content = null;
-        switch(this.state.status){
-            case "loading":
-                content = <LoadingView/>
-                break;
-            case "ok":
-                content = <ContentView info={this.state.ainfo} markdownContent={this.state.content}/>
-                break;
-            default:
-                content = <div>Error</div>
-                break;
-        }
         return <StdLayout>
+            <ArticleView content={this.state.content} info={this.state.ainfo}/>
             <div className="container">
-                {content}
+                <ValineComment/>
             </div>
-        </StdLayout>
+        </StdLayout> 
     }
 }
