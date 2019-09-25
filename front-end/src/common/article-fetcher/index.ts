@@ -1,7 +1,7 @@
 import IArticleInfo from "../../model/IArticleInfo";
 import goc from '../../common/global-object-container'
 export declare type MarkDownText = string;
-export const DEFAULT_API_PREFIX = "http://dream.zsh2401.top:9527/article/"
+export const DEFAULT_API_PREFIX = "https://dream.zsh2401.top:9527/article/"
 export default class ArticleFetcher{
     constructor(private dftApiPrefix:string=DEFAULT_API_PREFIX){}
     fetchArticleIndex(startAt:number=0,size:number=10,categoryCode:string="all"):Promise<IArticleInfo[]>{
