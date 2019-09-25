@@ -8,11 +8,10 @@ import NotLiveRoute from 'react-live-route'
 const LiveRoute = withRouter(NotLiveRoute)
 const router = <Router history={hs()}>
     <Switch>
-        <Route exact path="/"><Redirect to="/home"></Redirect></Route>
-        <Route path="/home"></Route>
+        <Route exact path="/"></Route>
         <Route path="/p/:id" component={PArticle}></Route>
         <Route path="*" component={P404}></Route>
     </Switch>
-    <LiveRoute path="/home" alwaysLive={true} component={PHome}/>
+    <LiveRoute exact path="/" livePath="/p/:id" component={PHome}/>
 </Router>
 export default router;

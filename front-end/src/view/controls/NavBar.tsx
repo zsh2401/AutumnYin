@@ -1,14 +1,29 @@
 import React from 'react';
-import {Menu} from 'antd'
+import {Navbar, Nav, Dropdown} from 'rsuite'
+import { Link } from 'react-router-dom';
+import hs from '../../common/history-provider'
 export class NavBar extends React.Component
 {
+    onSelect(eventKey:string){
+        hs().push(eventKey);
+    }
     render(){
-        return <div className="d-flex">
-            <div className="flex-first">wtf</div>
-            <Menu className="flex-end" mode="horizontal">
-                <Menu.Item>Fuck</Menu.Item>
-            </Menu>
-        </div> 
+        return <Navbar>
+            <Navbar.Body>
+                <Nav onSelect={this.onSelect}>
+                    <Nav.Item eventKey="/">
+                        秋隐 AUXYIN
+                    </Nav.Item>
+                    <Nav.Item eventKey="/discover">
+                        发现
+                    </Nav.Item>
+                    <Dropdown title="关于">
+                        <Dropdown.Item eventKey="/about">关于</Dropdown.Item>
+                        <Dropdown.Item eventKey="/opensource">开源与鸣谢</Dropdown.Item>
+                    </Dropdown>
+                </Nav>
+            </Navbar.Body>
+        </Navbar>
     }
     renderX(){
         return (<nav className="navbar navbar-expand-sm navbar-light bg-light">

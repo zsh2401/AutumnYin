@@ -16,6 +16,7 @@ const config:webpack.Configuration = {
 			template:"./src/App.html",
 			hash:true,
 			xhtml:true,
+			favicon:"./src/favicon.png"
 		}),
 	],
 	module: {

@@ -6,4 +6,6 @@ export default interface IArticleInfo{
     img:string;
     summary:string;
     categroy:string;
+    reprint?:string;
+    set_top:boolean;
 }

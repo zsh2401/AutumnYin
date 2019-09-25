@@ -1,9 +1,9 @@
 import React from "react"
 import IArticleInfo from "../../../model/IArticleInfo";
-import {Card,Button} from 'react-bootstrap'
+import {Card} from 'react-bootstrap'
 import "./index.css"
 import hp from '../../../common/history-provider'
-import { Skeleton } from "antd";
+import Placeholder from 'rsuite/lib/Placeholder';
 export interface ArticleCardProps{
     info?:IArticleInfo;
 }
@@ -13,7 +13,7 @@ export default class ArticleCard extends React.Component<ArticleCardProps>{
             return <Card className="article-card" onClick={()=>{hp().push("/p/" + this.props.info.id)}}>
                 <Card.Img src={this.props.info.img} variant="top"></Card.Img>
                 <Card.Body>
-                    <Card.Title>{this.props.info.title}</Card.Title>
+                    <Card.Title>{this.props.info.set_top ? "[置顶]" : null}{this.props.info.title}</Card.Title>
                     <Card.Text>
                     {this.props.info.summary}
                     </Card.Text>
@@ -21,7 +21,9 @@ export default class ArticleCard extends React.Component<ArticleCardProps>{
             </Card>
         }else{
             return <Card className="article-card">
-                <Skeleton active/>
+                <Placeholder.Paragraph style={{marginTop:10}} active/>
+                <Placeholder.Paragraph style={{marginTop:10}} active/>
+                <Placeholder.Paragraph style={{marginTop:10}} active/>
             </Card>
         }
     }
