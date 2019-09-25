@@ -51,6 +51,7 @@ namespace AutumnYin.API.Services.ArticleService.File
 
             var orderedAndFiltedByCCode = from info in all
                                           orderby DateTime.Parse(info.CreationTime) descending
+                                          orderby info.SetTop descending
                                           where categroyCode == "all" || categroyCode == info.CategroyCode
                                           select info;
 

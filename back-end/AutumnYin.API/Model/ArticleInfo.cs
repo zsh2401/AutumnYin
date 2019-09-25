@@ -9,6 +9,8 @@ namespace AutumnYin.API.Model
     [JsonObject(MemberSerialization.OptOut)]
     public class ArticleInfo
     {
+        [JsonProperty("set_top")]
+        public bool SetTop { get; set; } = false;
         [JsonProperty("id")]
         public string Id { get; set; } = null;
         [JsonProperty("title")]
