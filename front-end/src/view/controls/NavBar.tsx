@@ -2,7 +2,7 @@ import React from 'react';
 export class NavBar extends React.Component
 {
     render(){
-        return (<nav className="navbar navbar-expand-sm navbar-light fixed-top bg-light">
+        return (<nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
             <a className="navbar-brand" href="/">AuYin.com 秋隐</a> 
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".targetMenu">
