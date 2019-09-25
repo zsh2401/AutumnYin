@@ -1,13 +1,13 @@
-<h1 style="text-align:center">秋隐 AtuYin.com</h1>
+<h1 style="text-align:center">秋隐 <a href="https://auxyin.com">AUXYIN.COM</a></h1>
 <h4 style="text-align:center">一个简单的资讯PWA应用</h4>
 
 
 #### 为什么叫这个名字?
-秋是最美好的季节,隐最美好的女孩.  
+秋是最美好的季节,隐是最美好的女孩.  
 而秋隐谐音蚯蚓,寓意着我们会像蚯蚓一样不断发掘有用有趣的新闻
 
 ## 前端 front-end
-一个典型的HTML5+SPA+PWA应用,通过fetch与后端进行交互并展示新闻资讯
+一个典型的HTML5+SPA+PWA应用,通过fetch函数与后端进行交互并展示新闻资讯
 
 *注意:前端暂未进行SEO处理,无法被搜索引擎正常爬取*
 
@@ -22,6 +22,7 @@
 #### 前端依赖
 * [react](https://github.com/facebook/react)
 * [react-router](https://github.com/ReactTraining/react-router)
+* [react-live-route](https://github.com/fi3ework/react-live-route)
 * [Bootstrap 4](https://github.com/twbs/bootstrap)
 * [jQuery](https://github.com/jquery/jquery)
 * [Valine](https://github.com/xCss/Valine)
@@ -31,6 +32,7 @@
 * [Swiper.js](https://github.com/nolimits4web/swiper)
 * [react-horizontal-scrolling-menu](https://github.com/asmyshlyaev177/react-horizontal-scrolling-menu)
 * [mescroll](https://github.com/mescroll/mescroll)
+* [React Suite](https://rsuitejs.com/)
 
 #### 编译前端代码
 进入front-end文件夹
@@ -48,16 +50,12 @@
 另外,可以通过<code>npm run dev</code>进行实时调试(webpack-dev-server)
 
 ## 后端 back-end
-与数据库进行交互,为前端应用提供文章等数据的接口
+与后端数据进行交互,为前端应用提供文章等数据的接口
 #### 主要技术
-* .net core
-* .net ef core
-* .net core asp
-#### 后端依赖
-* .net core 2.2
-* .net core asp 2.2
-* .net ef core 2
-* MySql
+* dotnet core 2.2
+* asp dotnet core
+* C# 7
+#### 依赖包
 * Newtonsoft.Json
 
 #### 编译后端代码
