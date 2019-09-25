@@ -1,7 +1,7 @@
 export interface ICategroies{
     [code:string]:string;
 }
-const __data:ICategroies = {"zed":"单言","default":"最新","tec":"科技"};
+const __data:ICategroies = {"zed":"单言","all":"最新","tec":"科技"};
 export default function():ICategroies{
     return __data;
 }

@@ -25,7 +25,7 @@ export default class Index extends React.Component<any,IndexState>{
         let that = this;
         return <StdLayout headerTitle="AuTuMnYIN.COM 秋隐">
             <div className="d-flex flex-column h-100">
-                <div className="flex-first">
+                <div className="flex-first" style={{paddingTop:"15px"}}>
                     <SelectTab items={getNamesOnly()} selectIndex={this.state.selectIndex} selectionChanged={(index)=>this.selectChanged(index)}/>
                 </div>
                 <div className="flex-end h-100">

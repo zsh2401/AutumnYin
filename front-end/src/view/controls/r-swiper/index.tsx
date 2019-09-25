@@ -25,7 +25,6 @@ export default class RSwiper extends React.Component<RSwiperProps,RSwiperState>{
                 //@ts-ignore
                 element:(!el.props.lazy) || selectIndex == index ? el : null,
             }
-            console.log(selectIndex+ "/" + index);
             return result;
         });
         this.setState({

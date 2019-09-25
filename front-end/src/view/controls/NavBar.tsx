@@ -5,7 +5,7 @@ export class NavBar extends React.Component
         return (<nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
             <a className="navbar-brand" href="/">AuYin.com 秋隐</a> 
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".targetMenu">
+            <button className="navbar-toggler border-0" type="button" data-toggle="collapse" data-target=".targetMenu">
                 <span className="navbar-toggler-icon"></span>
             </button>
             
