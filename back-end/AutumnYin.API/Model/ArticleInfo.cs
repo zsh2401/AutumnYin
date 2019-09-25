@@ -17,6 +17,8 @@ namespace AutumnYin.API.Model
         public string Author { get; set; } = "佚名";
         [JsonProperty("img")]
         public string ImgUrl { get; set; } = null;
+        [JsonProperty("reprint")]
+        public string Reprint { get; set; } = null;
         [JsonProperty("hide")]
         public bool Hide { get; set; } = false;
         [JsonProperty("category")]
