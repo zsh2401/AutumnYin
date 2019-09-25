@@ -1,7 +1,16 @@
 import React from 'react';
+import {Menu} from 'antd'
 export class NavBar extends React.Component
 {
     render(){
+        return <div className="d-flex">
+            <div className="flex-first">wtf</div>
+            <Menu className="flex-end" mode="horizontal">
+                <Menu.Item>Fuck</Menu.Item>
+            </Menu>
+        </div> 
+    }
+    renderX(){
         return (<nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
             <a className="navbar-brand" href="/">AuYin.com 秋隐</a> 
