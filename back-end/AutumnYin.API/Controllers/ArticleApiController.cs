@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using AutumnYin.API.Model;
-using AutumnYin.API.Services;
 using AutumnYin.API.Services.ArticleService;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace AutumnYin.API.Controllers
 {
@@ -23,8 +19,19 @@ namespace AutumnYin.API.Controllers
         [HttpGet("index/{categoryCode}/{startAt}/{size}")]
         public ActionResult<IEnumerable<ArticleInfo>> IndexGet(string categoryCode,int startAt,int size)
         {
-            return (from article in articleService.GetIndex(categoryCode, startAt, size)
-                   select article).ToArray();
+            var orderedAndFiltedByCCode = from info in articleService.GetAllArticle()
+                                        orderby DateTime.Parse(info.CreationTime) descending
+                                          orderby info.SetTop descending
+                                          where categoryCode == "all" || categoryCode == info.CategroyCode
+                                          select info;
+
+            var visiable = from info in orderedAndFiltedByCCode
+                           where !info.Hide
+                           select info;
+
+            var result = visiable.Skip(startAt).Take(size);
+
+            return result.ToArray();
         }
 
         [HttpGet("info/{id}")]
@@ -41,7 +48,7 @@ namespace AutumnYin.API.Controllers
         [HttpGet("aimg/{id}/{fileName}")]
         public ActionResult ContentResourceGet(string id,string fileName)
         {
-            return new PhysicalFileResult(articleService.GetImagePath(id,fileName),"image/jpeg");
+            return new PhysicalFileResult(articleService.GetFile(id,fileName),"image/jpeg");
         }
     }
 }

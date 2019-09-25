@@ -8,9 +8,9 @@ namespace AutumnYin.API.Services.ArticleService
 {
     public interface IArticleService
     {
-        string GetContentById(string id);
-        IEnumerable<ArticleInfo>  GetIndex(string categroyCode,int startAt,int size);
+        IEnumerable<ArticleInfo>  GetAllArticle();
         ArticleInfo GetInfoById(string id);
-        string GetImagePath(string id, string fileName);
+        string GetContentById(string id);
+        string GetFile(string id, string fileName);
     }
 }

@@ -11,10 +11,11 @@ namespace AutumnYin.API.Services.ArticleService.File
 {
     public class FileArticleServiceImpl : IArticleService
     {
-        private const string IMG_RESOURCE_SERVER_PREFIX_FMT = "http://dream.zsh2401.top:9527/article/aimg/{0}/";
+        private const string IMG_RESOURCE_SERVER_PREFIX_FMT = "https://dream.zsh2401.top:9527/article/aimg/{0}/";
         private readonly static Regex imgRegex = new Regex(@"\!\[(.*)\]\((?!http)(.+)\)", RegexOptions.Multiline | RegexOptions.Compiled);
         private const string IMG_RESOURCE_REPLACE_FMT = "![$1]({0}$2)";
         private readonly DirectoryInfo articlesDir;
+
         public FileArticleServiceImpl() {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
@@ -23,8 +24,8 @@ namespace AutumnYin.API.Services.ArticleService.File
             else {
                 articlesDir = new DirectoryInfo(@"D:\Source\AutumnYin\articles-fake-data");
             }
-               
         }
+
         public string GetContentById(string id)
         {
             string path = Path.Combine(articlesDir.FullName, id, "index.md");
@@ -39,28 +40,16 @@ namespace AutumnYin.API.Services.ArticleService.File
             string replace = string.Format(IMG_RESOURCE_REPLACE_FMT, url);
             return imgRegex.Replace(markdownText, replace);
         }
-        public string GetImagePath(string id, string fileName)
+
+        public string GetFile(string id, string fileName)
         {
             return Path.Combine(articlesDir.FullName, id,fileName);
         }
 
-        public IEnumerable<ArticleInfo> GetIndex(string categroyCode, int startAt, int size)
+        public IEnumerable<ArticleInfo> GetAllArticle()
         {
-            var all = from articleDir in articlesDir.GetDirectories()
+            return from articleDir in articlesDir.GetDirectories()
                       select GetInfoById(articleDir.Name);
-
-            var orderedAndFiltedByCCode = from info in all
-                                          orderby DateTime.Parse(info.CreationTime) descending
-                                          orderby info.SetTop descending
-                                          where categroyCode == "all" || categroyCode == info.CategroyCode
-                                          select info;
-
-            var visiable = from info in orderedAndFiltedByCCode
-                           where !info.Hide
-                           select info;
-
-            var result = visiable.Skip(startAt).Take(size);
-            return result;
         }
         public ArticleInfo GetInfoById(string id)
         {
