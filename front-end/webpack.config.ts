@@ -1,5 +1,7 @@
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import OfflinePlugin from 'offline-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 import webpack from "webpack"
 const config:webpack.Configuration = {
 	entry: './src/App.tsx',
@@ -15,8 +17,13 @@ const config:webpack.Configuration = {
 			filename:"index.html",
 			template:"./src/App.html",
 			hash:true,
-			xhtml:true,
-			favicon:"./src/favicon.png"
+			xhtml:true
+		}),
+		new CopyWebpackPlugin([
+			{from:path.resolve(__dirname,"./src/assets/copy-to-root") ,to:path.resolve(__dirname,"./dist")}
+		]),
+		new OfflinePlugin({
+			"Caches":"all"
 		}),
 	],
 	module: {

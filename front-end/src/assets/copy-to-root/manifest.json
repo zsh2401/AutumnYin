@@ -1,0 +1,14 @@
+{
+    "name": "秋隐",
+    "icons": [
+      {
+        "src": "/favicon.ico",
+        "sizes": "256x256",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#f7f7fa",
+    "background_color": "#ffffff",
+    "start_url": "/",
+    "display": "standalone"
+  }

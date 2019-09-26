@@ -12,6 +12,8 @@ import 'rsuite/dist/styles/rsuite-default.css';
 
 import "./App.css"
 
+import OfflinePluginRuntime from "offline-plugin/runtime"
+OfflinePluginRuntime.install();
 
 import AppRouter from './AppRouter'
 ReactDOM.render(AppRouter,document.querySelector("#app"));

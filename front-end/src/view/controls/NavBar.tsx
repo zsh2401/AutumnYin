@@ -26,10 +26,7 @@ export class NavBar extends React.Component<any,NavBarState>
         <Navbar.Body>
           <Nav onSelect={this.onSelect} activeKey={this.state.selectedKey}>
             <Nav.Item eventKey="/discover">发现</Nav.Item>
-            <Dropdown title="关于">
-              <Dropdown.Item eventKey="/os">开放源代码</Dropdown.Item>
-              <Dropdown.Item eventKey="/about">关于</Dropdown.Item>
-            </Dropdown>
+            <Nav.Item eventKey="/about">关于</Nav.Item>
           </Nav>
         </Navbar.Body>
       </Navbar>
