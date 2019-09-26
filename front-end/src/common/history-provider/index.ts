@@ -1,4 +1,4 @@
-import  { History,createBrowserHistory } from 'history'
+import  { History,createBrowserHistory,createHashHistory } from 'history'
 import goc from '../global-object-container'
 const KEY = "glh";
 export default function get():History{
@@ -6,7 +6,7 @@ export default function get():History{
     if(result){
         return result;
     }else{
-        goc.put(KEY,createBrowserHistory());
+        goc.put(KEY,createHashHistory());
         return get();
     }
 }

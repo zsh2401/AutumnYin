@@ -27,19 +27,22 @@ export default class ArticlePage extends React.Component<any,ArticlePageState>{
             console.error(err);
         });
         instance().fetchArticleContentById(id).then((text)=>{
-            this.setState({
-                content:text
-            });
+            setTimeout(()=>{
+                this.setState({
+                    content:text
+                });
+            },1000)
         }).catch(err=>{
             console.error(err);
         });
     }
     render(){
+        let id = this.props.match.params.id;
         return <StdLayout>
             <ArticleView content={this.state.content} info={this.state.ainfo}/>
             <Divider/>
             <div className="container">
-                <ValineComment/>
+                <ValineComment path={"/p/" + id}/>
             </div>
         </StdLayout> 
     }

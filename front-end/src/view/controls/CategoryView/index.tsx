@@ -1,5 +1,5 @@
 import React from "react"
-import DefaultCategoryView from "./default-cview";
+import DefaultCategoryView from "./DefaultCategoryView";
 export default function factory(categoryCode:string){
     switch(categoryCode){
         default:

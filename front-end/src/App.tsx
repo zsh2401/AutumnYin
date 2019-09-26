@@ -7,8 +7,11 @@ import "jquery/dist/jquery"
 import "bootstrap"
 import "./view/css/bs-simplex/_entry.scss"
 
+//rsuite
+import 'rsuite/dist/styles/rsuite-default.css';
+
 import "./App.css"
-import 'rsuite/dist/styles/rsuite-default.min.css'
+
 
 import AppRouter from './AppRouter'
 ReactDOM.render(AppRouter,document.querySelector("#app"));

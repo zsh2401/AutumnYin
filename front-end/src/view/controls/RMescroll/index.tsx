@@ -13,6 +13,7 @@ export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollS
             up = {
                 callback:(page)=>this.upCallback(page),
                 auto:false,
+                noMoreSize:0,
                 toTop:{src:"http://img3.imgtn.bdimg.com/it/u=3077852061,789126990&fm=26&gp=0.jpg", offset:600}
             }
         }
@@ -41,13 +42,14 @@ export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollS
     public endError(){
         this.mescrollObj.endErr();
     }
-    public endSuccess(){
-        this.mescrollObj.endSuccess();
+    public endSuccess(dataSize:number,hasNext:boolean){
+        this.mescrollObj.endSuccess(dataSize,hasNext);
     }
 
     public endBySize(size:number){
         this.mescrollObj.endBySize(size);
     }
+
     render(){
         return <div className="mescroll"  style={{height:"100%",position:"fixed"}} ref={_div=>this.meScrollDiv = _div}>
             <div>

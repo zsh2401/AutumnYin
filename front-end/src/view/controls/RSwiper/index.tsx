@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import Swiper from 'swiper'
 import "swiper/dist/css/swiper.min.css"
-import RSwiperSlide from './r-swiper-slide';
+import RSwiperSlide from './RSwiperSlide';
 export interface RSwiperProps{
     children:React.ReactElement<RSwiperSlide>[];
     slideChange?:(slideIndex:number)=>void;

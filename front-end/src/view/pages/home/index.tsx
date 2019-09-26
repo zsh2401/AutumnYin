@@ -1,12 +1,10 @@
 import React from 'react'
 import StdLayout from '../../layout/StdLayout'
-import RSwiper from '../../controls/r-swiper'
-import RSwiperSlide from '../../controls/r-swiper/r-swiper-slide'
-import SelectTab from '../../controls/select-tab';
-import idGenerator from '../../../common/id-generator';
+import RSwiper from '../../controls/RSwiper'
+import RSwiperSlide from '../../controls/RSwiper/RSwiperSlide'
+import SelectTab from '../../controls/TabMenu';
 import cm,{getCodesOnly,getNamesOnly} from '../../../common/categroies-manager'
-import RMeScroll from '../../controls/react-mescroll';
-import cview from '../../controls/category-view'
+import cview from '../../controls/CategoryView'
 export interface IndexState{
     selectIndex:number;
 }

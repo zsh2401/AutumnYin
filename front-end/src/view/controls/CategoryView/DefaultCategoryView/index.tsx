@@ -1,8 +1,9 @@
 import React from 'react'
-import RMeScroll from '../../react-mescroll';
+import RMeScroll from '../../RMescroll';
 import IArticleInfo from '../../../../model/IArticleInfo';
 import ArticleCard from '../../ArticleCard';
 import {instance} from '../../../../common/article-fetcher';
+import ArticleList from '../../ArticleList';
 export interface DefaultCategoryViewProps{
     categoryCode:string;
 }
@@ -16,7 +17,7 @@ export default class DefaultCategoryView extends React.Component<DefaultCategory
     }
     componentWillMount(){
         this.setState({
-            articles:[null,null,null,null,null,null,null,null,null,null,null,null,null],
+            articles:null,
             state:"loading"
         });
     }
@@ -24,26 +25,27 @@ export default class DefaultCategoryView extends React.Component<DefaultCategory
         this.rMeScroll.triggerDownScroll();
     }
     down(){
-        instance().fetchArticleIndex(0,5,this.props.categoryCode)
-        .then((data:IArticleInfo[])=>{this.setState({articles:data});this.setState({state:"ok"})})
+        instance().fetchArticleIndex(0,11,this.props.categoryCode)
+        .then((data:IArticleInfo[])=>{
+            this.setState({articles:data.slice(0,9)});
+            this.setState({state:"ok"});
+            this.rMeScroll.endSuccess(data.length - 1,data.length > 10)
+        })
         .catch(err=>{console.error(err);this.setState({state:"error"})})
-        .finally(()=>this.rMeScroll.endSuccess());
     }
     up(){
-        instance().fetchArticleIndex(this.state.articles.length,10,this.props.categoryCode)
+        instance().fetchArticleIndex(this.state.articles.length,11,this.props.categoryCode)
         .then((data:IArticleInfo[])=>{
             this.setState({articles:this.state.articles.concat(data)});
             this.setState({state:"ok"})
-            this.rMeScroll.endBySize(data.length);
+            this.rMeScroll.endSuccess(data.length - 1,data.length > 10)
         })
         .catch(err=>{console.error(err);this.setState({state:"error"})})
     }
     render(){
-        let key:number = 0;
         return <RMeScroll ref="mescroll" downCallback={()=>{this.down()}} upCallback={()=>{this.up()}}>
-            <div className="container">{this.state.articles.map((article)=>{
-                    return <ArticleCard key={article ? article.id : key++} info={article}/>
-                })}
+            <div className="container" style={{marginTop:"20px"}}>
+                <ArticleList articles={this.state.articles}/>
             </div>
         </RMeScroll>
     }

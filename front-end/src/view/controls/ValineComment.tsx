@@ -17,7 +17,7 @@ export default class ValineComment extends React.Component<ValineCommentProps>{
             el:"#" + this.id,
             appId:APP_ID,
             appKey:APP_KEY,
-            path:this.props.path || undefined,
+            path:this.props.path || null,
             placeholder:PLACE_HOLDER,
             visitor:true
         });

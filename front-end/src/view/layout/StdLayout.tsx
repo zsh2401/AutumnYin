@@ -1,8 +1,6 @@
 import React, { CSSProperties } from 'react'
 import "./StdLayout.css"
 import { NavBar } from '../controls/NavBar';
-import Footer from '../controls/Footer'
-import { relative } from 'path';
 export interface StdLayoutProps{
     headerTitle?:string;
     bottomIndex?:-1 | 0 | 1 | 2 | 3;

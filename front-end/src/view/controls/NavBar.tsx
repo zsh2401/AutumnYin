@@ -1,29 +1,38 @@
 import React from 'react';
-import {Navbar, Nav, Dropdown} from 'rsuite'
+import {Navbar, Nav, Dropdown, Icon} from 'rsuite'
 import { Link } from 'react-router-dom';
 import hs from '../../common/history-provider'
-export class NavBar extends React.Component
+export interface NavBarState{
+    selectedKey:string;
+}
+export class NavBar extends React.Component<any,NavBarState>
 {
+    componentWillMount(){
+        this.setState({
+            selectedKey:"/"
+        });
+    }
     onSelect(eventKey:string){
         hs().push(eventKey);
+        this.setState({
+            selectedKey:eventKey
+        });
     }
     render(){
         return <Navbar>
-            <Navbar.Body>
-                <Nav onSelect={this.onSelect}>
-                    <Nav.Item eventKey="/">
-                        秋隐 AUXYIN
-                    </Nav.Item>
-                    <Nav.Item eventKey="/discover">
-                        发现
-                    </Nav.Item>
-                    <Dropdown title="关于">
-                        <Dropdown.Item eventKey="/about">关于</Dropdown.Item>
-                        <Dropdown.Item eventKey="/opensource">开源与鸣谢</Dropdown.Item>
-                    </Dropdown>
-                </Nav>
-            </Navbar.Body>
-        </Navbar>
+        <Navbar.Header style={{marginRight:"20px"}}>
+          <a onClick={()=>this.onSelect("/")} style={{lineHeight:"56px",marginLeft:"20px"}}>AUXYIN-秋隐</a>
+        </Navbar.Header>
+        <Navbar.Body>
+          <Nav onSelect={this.onSelect} activeKey={this.state.selectedKey}>
+            <Nav.Item eventKey="/discover">发现</Nav.Item>
+            <Dropdown title="关于">
+              <Dropdown.Item eventKey="/os">开放源代码</Dropdown.Item>
+              <Dropdown.Item eventKey="/about">关于</Dropdown.Item>
+            </Dropdown>
+          </Nav>
+        </Navbar.Body>
+      </Navbar>
     }
     renderX(){
         return (<nav className="navbar navbar-expand-sm navbar-light bg-light">
