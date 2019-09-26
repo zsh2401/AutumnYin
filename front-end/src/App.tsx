@@ -16,4 +16,7 @@ import OfflinePluginRuntime from "offline-plugin/runtime"
 OfflinePluginRuntime.install();
 
 import AppRouter from './AppRouter'
-ReactDOM.render(AppRouter,document.querySelector("#app"));
+
+setTimeout(()=>{
+    ReactDOM.render(AppRouter,document.querySelector("#app"));
+},1500)
