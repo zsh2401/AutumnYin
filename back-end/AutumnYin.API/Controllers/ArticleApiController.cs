@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutumnYin.API.Model;
+using AutumnYin.API.Services;
 using AutumnYin.API.Services.ArticleService;
+using AutumnYin.API.Services.ArticleService.DatabaseService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutumnYin.API.Controllers
@@ -11,44 +13,88 @@ namespace AutumnYin.API.Controllers
     [ApiController]
     public class ArticleApiController : ControllerBase
     {
-        private readonly IArticleService articleService;
-        public ArticleApiController(IArticleService articleService)
+        private readonly AuxYinDb dbContext;
+        public ArticleApiController(AuxYinDb dbContext)
         {
-            this.articleService = articleService;
-        }
-        [HttpGet("index/{categoryCode}/{startAt}/{size}")]
-        public ActionResult<IEnumerable<ArticleInfo>> IndexGet(string categoryCode,int startAt,int size)
+            this.dbContext = dbContext;
+         }
+        public override AcceptedResult Accepted()
         {
-            var orderedAndFiltedByCCode = from info in articleService.GetAllArticle()
-                                        orderby DateTime.Parse(info.CreationTime) descending
-                                          orderby info.SetTop descending
-                                          where categoryCode == "all" || categoryCode == info.CategroyCode
-                                          select info;
-
-            var visiable = from info in orderedAndFiltedByCCode
-                           where !info.Hide
-                           select info;
-
-            var result = visiable.Skip(startAt).Take(size);
-
-            return result.ToArray();
+            this.Response.Headers["Access-Control-Allow-Origin"] = "*";
+            return base.Accepted();
         }
 
-        [HttpGet("info/{id}")]
-        public ActionResult<ArticleInfo> Get(string id)
+        [HttpGet("list")]
+        public ActionResult<IEnumerable<Article>> IndexGet([FromQuery]string categoryCode = "all", [FromQuery]int startAt = 0, [FromQuery] int size = 10)
         {
-            return articleService.GetInfoById(id);
+            using (dbContext)
+            {
+                dbContext.Database.EnsureCreated();
+                var articles = from info in dbContext.Articles
+                               orderby DateTime.Parse(info.CreationTime) descending
+                               orderby info.SetTop descending
+                               where categoryCode == "all" || categoryCode == info.Category.Id
+                               where !info.Hide
+                               select CutOffContent(info);
+
+                articles = articles.Skip(startAt).Take(size);
+
+                return articles.ToArray();
+            }
+        }
+        private static Article CutOffContent(Article article)
+        {
+            article.Content = null;
+            return article;
         }
 
-        [HttpGet("content/{id}")]
-        public ActionResult<string> ContentGet(string id)
+        [HttpGet("{id}")]
+        public ActionResult<Article> Get(int id)
         {
-            return articleService.GetContentById(id);
+            using (dbContext)
+            {
+                dbContext.Database.EnsureCreated();
+                return (from articleInfo in dbContext.Articles
+                        where articleInfo.Id == id
+                        select articleInfo).FirstOrDefault();
+            }
         }
-        [HttpGet("aimg/{id}/{fileName}")]
-        public ActionResult ContentResourceGet(string id,string fileName)
+
+        [HttpPost]
+        public ActionResult<int> UpdateArticle([FromBody]Article info)
         {
-            return new PhysicalFileResult(articleService.GetFile(id,fileName),"image/jpeg");
+            try
+            {
+                using (dbContext)
+                {
+                    var article = dbContext.Articles.Single(a=>a.Id == info.Id);
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<int> DeleteArticle(int id)
+        {
+            try
+            {
+                using (dbContext)
+                {
+                    var target = from a in dbContext.Articles
+                                where a.Id == id
+                                select a;
+                    var article = dbContext.Articles.Remove(target.First());
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
         }
     }
 }
