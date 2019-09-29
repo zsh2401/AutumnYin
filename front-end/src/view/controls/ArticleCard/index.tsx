@@ -5,7 +5,7 @@ import hp from '../../../common/history-provider'
 import Placeholder from 'rsuite/lib/Placeholder';
 import { Panel, Divider } from "rsuite";
 import hs from '../../../common/history-provider'
-import IArticle from "../../../model/Article";
+import IArticle from "../../../model/IArticle";
 export interface ArticleCardProps{
     article?:IArticle;
 }

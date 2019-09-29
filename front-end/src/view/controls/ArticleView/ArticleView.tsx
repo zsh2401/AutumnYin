@@ -3,7 +3,7 @@ import PlaceHolder from 'rsuite/lib/Placeholder'
 import marked from 'marked'
 import "./ArticleView.css"
 import { Divider} from 'rsuite';
-import IArticle from '../../../model/Article';
+import IArticle from '../../../model/IArticle';
 export interface ArticleViewProps{
     info:IArticle;
 }

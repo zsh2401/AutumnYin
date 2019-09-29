@@ -1,6 +1,6 @@
 import React from 'react'
 import ArticleCard from '../ArticleCard';
-import IArticle from '../../../model/Article';
+import IArticle from '../../../model/IArticle';
 export interface ArticleListProps{
     articles:IArticle[];
 }

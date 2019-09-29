@@ -1,8 +1,8 @@
 import React from 'react'
 import RMeScroll from '../../RMescroll';
 import ArticleList from '../../ArticleList';
-import ArticleApi from '../../../../common/article-api';
-import IArticle from '../../../../model/Article';
+import ArticleApi from '../../../../common/back-api/article';
+import IArticle from '../../../../model/IArticle';
 import Paragraph from 'rsuite/lib/Placeholder/PlaceholderParagraph';
 export interface DefaultCategoryViewProps{
     categoryCode:string;

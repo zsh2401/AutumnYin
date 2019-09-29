@@ -4,8 +4,8 @@ import "./index.css"
 import ValineComment from '../../controls/ValineComment';
 import ArticleView from '../../controls/ArticleView/ArticleView';
 import { Divider } from 'rsuite';
-import aapi from '../../../common/article-api'
-import IArticle from '../../../model/Article';
+import aapi from '../../../common/back-api/article'
+import IArticle from '../../../model/IArticle';
 import Paragraph from 'rsuite/lib/Placeholder/PlaceholderParagraph';
 export interface ArticlePageState{
     article:IArticle;
