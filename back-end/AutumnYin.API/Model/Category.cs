@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AutumnYin.API.Model
 {
@@ -8,5 +9,7 @@ namespace AutumnYin.API.Model
         public string Id { get; set; }
         [Required]
         public string Name { get; set; }
+
+        public List<Article> Articles { get; set; }
     }
 }

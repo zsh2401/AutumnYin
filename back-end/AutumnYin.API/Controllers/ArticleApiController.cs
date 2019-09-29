@@ -14,24 +14,19 @@ namespace AutumnYin.API.Controllers
     public class ArticleApiController : ControllerBase
     {
         private readonly AuxYinDb dbContext;
+
         public ArticleApiController(AuxYinDb dbContext)
         {
             this.dbContext = dbContext;
-         }
-        public override AcceptedResult Accepted()
-        {
-            this.Response.Headers["Access-Control-Allow-Origin"] = "*";
-            return base.Accepted();
         }
 
-        [HttpGet("list")]
+        [HttpGet]
         public ActionResult<IEnumerable<Article>> IndexGet([FromQuery]string categoryCode = "all", [FromQuery]int startAt = 0, [FromQuery] int size = 10)
         {
             using (dbContext)
             {
-                dbContext.Database.EnsureCreated();
                 var articles = from info in dbContext.Articles
-                               orderby DateTime.Parse(info.CreationTime) descending
+                               orderby info.CreationTime descending
                                orderby info.SetTop descending
                                where categoryCode == "all" || categoryCode == info.Category.Id
                                where !info.Hide
@@ -42,59 +37,31 @@ namespace AutumnYin.API.Controllers
                 return articles.ToArray();
             }
         }
-        private static Article CutOffContent(Article article)
-        {
-            article.Content = null;
-            return article;
-        }
 
         [HttpGet("{id}")]
         public ActionResult<Article> Get(int id)
         {
             using (dbContext)
             {
-                dbContext.Database.EnsureCreated();
-                return (from articleInfo in dbContext.Articles
-                        where articleInfo.Id == id
-                        select articleInfo).FirstOrDefault();
+                var query = (from articleInfo in dbContext.Articles
+                             where articleInfo.Id == id
+                             select articleInfo);
+                if (query.Any())
+                {
+                    return query.First();
+                }
+                else
+                {
+                    this.Response.StatusCode = 404;
+                    return null;
+                }
             }
         }
 
-        [HttpPost]
-        public ActionResult<int> UpdateArticle([FromBody]Article info)
+        private static Article CutOffContent(Article article)
         {
-            try
-            {
-                using (dbContext)
-                {
-                    var article = dbContext.Articles.Single(a=>a.Id == info.Id);
-                    return 0;
-                }
-            }
-            catch (Exception)
-            {
-                return 1;
-            }
-        }
-
-        [HttpDelete("{id}")]
-        public ActionResult<int> DeleteArticle(int id)
-        {
-            try
-            {
-                using (dbContext)
-                {
-                    var target = from a in dbContext.Articles
-                                where a.Id == id
-                                select a;
-                    var article = dbContext.Articles.Remove(target.First());
-                    return 0;
-                }
-            }
-            catch (Exception)
-            {
-                return 1;
-            }
+            article.Content = null;
+            return article;
         }
     }
 }
