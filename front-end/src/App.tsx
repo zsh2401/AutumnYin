@@ -17,6 +17,7 @@ import OfflinePluginRuntime from "offline-plugin/runtime"
 import debugmx from "./common/debug-mx"
 
 if(!debugmx.isDev){
+    console.log("is production env,install sw.js")
     OfflinePluginRuntime.install();
 }
 
