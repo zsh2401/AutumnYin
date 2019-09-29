@@ -12,7 +12,6 @@ export default class ValineComment extends React.Component<ValineCommentProps>{
     private mainEle:HTMLDivElement = null;
     private id:string = idg();
     componentDidMount(){
-        console.log(this.mainEle);
         new Valine({
             el:"#" + this.id,
             appId:APP_ID,

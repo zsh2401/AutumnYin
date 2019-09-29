@@ -4,12 +4,13 @@ import IArticleInfo from '../../../../model/IArticleInfo';
 import ArticleCard from '../../ArticleCard';
 import {instance} from '../../../../common/article-fetcher';
 import ArticleList from '../../ArticleList';
+import ArticleApi from '../../../../common/article-api';
+import IArticle from '../../../../model/Article';
 export interface DefaultCategoryViewProps{
     categoryCode:string;
 }
 export interface DefaultCategoryViewState{
-    articles:Array<IArticleInfo>;
-    state:"loading" | "ok" | "error";
+    articles:Array<IArticle>;
 }
 export default class DefaultCategoryView extends React.Component<DefaultCategoryViewProps,DefaultCategoryViewState>{
     private get rMeScroll(){
@@ -18,29 +19,26 @@ export default class DefaultCategoryView extends React.Component<DefaultCategory
     componentWillMount(){
         this.setState({
             articles:null,
-            state:"loading"
         });
     }
     componentDidMount(){
         this.rMeScroll.triggerDownScroll();
     }
     down(){
-        instance().fetchArticleIndex(0,11,this.props.categoryCode)
-        .then((data:IArticleInfo[])=>{
-            this.setState({articles:data.slice(0,9)});
-            this.setState({state:"ok"});
-            this.rMeScroll.endSuccess(data.length - 1,data.length > 10)
-        })
-        .catch(err=>{console.error(err);this.setState({state:"error"})})
+        ArticleApi.fetchArticleIndex((err,result)=>{
+            this.setState({
+                articles:result.slice(0,9)
+            });
+            this.rMeScroll.endSuccess(result.length,result.length > 10);
+        },this.props.categoryCode,0,11);
     }
     up(){
-        instance().fetchArticleIndex(this.state.articles.length,11,this.props.categoryCode)
-        .then((data:IArticleInfo[])=>{
-            this.setState({articles:this.state.articles.concat(data)});
-            this.setState({state:"ok"})
-            this.rMeScroll.endSuccess(data.length - 1,data.length > 10)
-        })
-        .catch(err=>{console.error(err);this.setState({state:"error"})})
+        ArticleApi.fetchArticleIndex((err,result)=>{
+            this.setState({
+                articles:this.state.articles.concat(result.slice(0,9))
+            });
+            this.rMeScroll.endSuccess(result.length,result.length > 10);
+        },this.props.categoryCode,this.state.articles.length,11);
     }
     render(){
         return <RMeScroll ref="mescroll" downCallback={()=>{this.down()}} upCallback={()=>{this.up()}}>

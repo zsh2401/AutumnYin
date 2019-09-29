@@ -2,8 +2,9 @@ import React from 'react'
 import IArticleInfo from '../../../model/IArticleInfo';
 import Paragraph from 'rsuite/lib/Placeholder/PlaceholderParagraph';
 import ArticleCard from '../ArticleCard';
+import IArticle from '../../../model/Article';
 export interface ArticleListProps{
-    articles?:IArticleInfo[];
+    articles?:IArticle[];
 }
 export default class ArticleList extends React.Component<ArticleListProps>{
     render(){
@@ -36,7 +37,7 @@ export default class ArticleList extends React.Component<ArticleListProps>{
     }
     private renderContent(){
         return <div style={{maxWidth:"800px",marginLeft:"auto",marginRight:"auto"}}>
-            {this.props.articles.map(article=><ArticleCard key={article.id} info={article}/>)}
+            {this.props.articles.map(article=><ArticleCard key={article.id} article={article}/>)}
         </div>
     }
 }

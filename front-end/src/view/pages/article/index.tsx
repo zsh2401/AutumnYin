@@ -1,47 +1,37 @@
 import React from 'react'
 import StdLayout from '../../layout/StdLayout';
-import {instance} from '../../../common/article-fetcher'
 import "./index.css"
-import IArticleInfo from '../../../model/IArticleInfo';
 import ValineComment from '../../controls/ValineComment';
-import ArticleView from './ArticleView';
+import ArticleView from '../../controls/ArticleView/ArticleView';
 import { Divider } from 'rsuite';
+import aapi from '../../../common/article-api'
+import IArticle from '../../../model/Article';
 export interface ArticlePageState{
-    content:string;
-    ainfo:IArticleInfo;
+    article:IArticle;
 }
 export default class ArticlePage extends React.Component<any,ArticlePageState>{
     componentWillMount(){
         this.setState({
-            content:null,
-            ainfo:null,
+            article:null,
         });
     }
     componentDidMount(){
         let id = this.props.match.params.id;
-        instance().fetchArticleInfoById(id).then(data=>{
-            this.setState({
-                ainfo:data
-            });
-        }).catch(err=>{
-            console.error(err);
-        });
-        instance().fetchArticleContentById(id).then((text)=>{
+        aapi.fetchArticle(id,(err,article)=>{
             setTimeout(()=>{
                 this.setState({
-                    content:text
+                    article:article
                 });
+                
             },1000)
-        }).catch(err=>{
-            console.error(err);
-        });
+        })
     }
     render(){
         let id = this.props.match.params.id;
         return <StdLayout>
-            <ArticleView content={this.state.content} info={this.state.ainfo}/>
-            <Divider/>
             <div className="container">
+                <ArticleView info={this.state.article}/>
+                <Divider/>
                 <ValineComment path={"/p/" + id}/>
             </div>
         </StdLayout> 

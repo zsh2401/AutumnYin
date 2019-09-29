@@ -1,7 +1,7 @@
 export interface ICategroies{
     [code:string]:string;
 }
-const __data:ICategroies = {"zed":"单言","all":"最新","game":"游戏","en_article":"英读","says":"言叶之庭","animate":"动漫"};
+const __data:ICategroies = {"zed":"单言","all":"最新","game":"游戏","tec":"科技","en_article":"英读","says":"言叶之庭","animate":"动漫"};
 export default function():ICategroies{
     return __data;
 }

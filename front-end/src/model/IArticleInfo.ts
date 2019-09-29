@@ -8,4 +8,5 @@ export default interface IArticleInfo{
     categroy:string;
     reprint?:string;
     set_top:boolean;
+    content?:string;
 }

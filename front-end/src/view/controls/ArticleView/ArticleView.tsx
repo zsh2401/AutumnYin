@@ -1,21 +1,17 @@
 import React from 'react'
-import IArticleInfo from '../../../model/IArticleInfo';
-// import {PageHeader, Skeleton } from 'antd';
-import hs from '../../../common/history-provider'
 import PlaceHolder from 'rsuite/lib/Placeholder'
 import marked from 'marked'
 import "./ArticleView.css"
-import { Divider, Button, Icon } from 'rsuite';
+import { Divider} from 'rsuite';
+import IArticle from '../../../model/Article';
 export interface ArticleViewProps{
-    content:string;
-    info:IArticleInfo;
+    info:IArticle;
 }
 export default class ArticleView extends React.Component<ArticleViewProps>{
     render(){
-        if(this.props.content && this.props.info){
+        if(this.props.info){
             return <div className="article-box">
                 <div className="container">
-
                     <div className="d-flex flex-grow" style={{marginTop:"20px"}}>
                         <div className="flex-first"><h3 style={{color:"gray",background:"gray",marginRight:"10px"}}>_</h3></div>
                         <div className="flex-end">
@@ -33,10 +29,9 @@ export default class ArticleView extends React.Component<ArticleViewProps>{
                             }
                         </div>
                     </div>
-
                 </div>
                 <Divider/>
-                <article className="container" dangerouslySetInnerHTML={{__html:marked(this.props.content)}}/>
+                <article className="container" dangerouslySetInnerHTML={{__html:marked(this.props.info.content)}}/>
             </div> 
         }else{
             return <div className="container">
