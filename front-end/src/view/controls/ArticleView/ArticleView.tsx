@@ -4,6 +4,7 @@ import marked from 'marked'
 import "./ArticleView.css"
 import { Divider} from 'rsuite';
 import IArticle from '../../../model/IArticle';
+import MarkdownView from '../MarkdownView';
 export interface ArticleViewProps{
     info:IArticle;
 }
@@ -31,7 +32,7 @@ export default class ArticleView extends React.Component<ArticleViewProps>{
                     </div>
                 </div>
                 <Divider/>
-                <article className="container" dangerouslySetInnerHTML={{__html:marked(this.props.info.content)}}/>
+                <MarkdownView source={this.props.info.content}/>
             </div> 
         }else{
             return <div className="container">
