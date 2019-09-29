@@ -27,7 +27,10 @@ namespace AutumnYin.API.Controllers
                             select s;
                 if (query.Any())
                 {
-                    return query.ElementAt(new Random().Next(0, query.Count()));
+                    int ranId = new Random().Next(1, query.Count());
+                    return (from q in query
+                                 where q.Id == ranId
+                                 select q).First();
                 }
                 else {
                     return new Sentence()
