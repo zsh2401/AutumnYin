@@ -1,6 +1,5 @@
 import IArticle from "../../model/Article";
 import debugmx from '../../common/debug-mx'
-import IArticleInfo from "../../model/IArticleInfo";
 export default class ArticleApi{
     private static readonly API_URL = debugmx.isDev ? "https://localhost:44305/" : "https://api.auxyin.com:1937/";
     static fetchArticle(id:number,callback:(err:any,article:IArticle)=>void){

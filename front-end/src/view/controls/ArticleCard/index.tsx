@@ -1,5 +1,4 @@
 import React from "react"
-import IArticleInfo from "../../../model/IArticleInfo";
 import {Card} from 'react-bootstrap'
 import "./index.css"
 import hp from '../../../common/history-provider'

@@ -1,38 +1,22 @@
 import React from 'react'
-import IArticleInfo from '../../../model/IArticleInfo';
-import Paragraph from 'rsuite/lib/Placeholder/PlaceholderParagraph';
 import ArticleCard from '../ArticleCard';
 import IArticle from '../../../model/Article';
 export interface ArticleListProps{
-    articles?:IArticle[];
+    articles:IArticle[];
 }
 export default class ArticleList extends React.Component<ArticleListProps>{
     render(){
-        if(this.props.articles && this.props.articles.length > 0){
+        if(this.props.articles.length > 0){
             return this.renderContent();
         }else{
-            return this.renderSkeleton();
+            return this.renderEmpty();
         }
     }
-    private renderSkeleton(){
-        return <div>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
-            <Paragraph/>
+    private renderEmpty(){
+        return <div className="text-center">
+            <br/>
+            <h3 >空空 如野</h3>
+            <p><i>I know,I know I've let you down</i></p>
         </div>
     }
     private renderContent(){

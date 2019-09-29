@@ -9,11 +9,9 @@ export interface ValineCommentProps{
     path?:string;
 }
 export default class ValineComment extends React.Component<ValineCommentProps>{
-    private mainEle:HTMLDivElement = null;
-    private id:string = idg();
     componentDidMount(){
         new Valine({
-            el:"#" + this.id,
+            el:"#comment",
             appId:APP_ID,
             appKey:APP_KEY,
             path:this.props.path || null,
@@ -22,7 +20,6 @@ export default class ValineComment extends React.Component<ValineCommentProps>{
         });
     }
     render(){
-        let that = this;
-        return <div id={this.id}></div>
+        return <div id="comment"></div>
     }
 }

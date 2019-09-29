@@ -32,7 +32,7 @@ export default class ArticlePage extends React.Component<any,ArticlePageState>{
             <div className="container">
                 <ArticleView info={this.state.article}/>
                 <Divider/>
-                <ValineComment path={"/p/" + id}/>
+                <ValineComment path={"p-" + id}/>
             </div>
         </StdLayout> 
     }

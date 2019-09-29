@@ -21,8 +21,4 @@ if(!debugmx.isDev){
 }
 
 import AppRouter from './AppRouter'
-
-// setTimeout(()=>{
-//     ReactDOM.render(AppRouter,document.querySelector("#app"));
-// },1500)
 ReactDOM.render(AppRouter,document.querySelector("#app"));
