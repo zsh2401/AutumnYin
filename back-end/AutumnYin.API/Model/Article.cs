@@ -20,7 +20,7 @@ namespace AutumnYin.API.Model
         public string Title { get; set; }
         [DefaultValue(null), Required, JsonProperty("author")]
         public string Author { get; set; }
-        [DefaultValue(null), MaxLength(10),Required, JsonProperty("img")]
+        [DefaultValue(null), MaxLength(50),Required, JsonProperty("img")]
         public string ImgUrl { get; set; }
         [DefaultValue(null), MaxLength(15),JsonProperty("reprint")]
         public string Reprint { get; set; }
