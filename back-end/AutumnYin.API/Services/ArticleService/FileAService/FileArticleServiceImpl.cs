@@ -34,6 +34,7 @@ namespace AutumnYin.API.Services.ArticleService.File
                 return ReplaceImgString(textReader.ReadToEnd(), id);
             }
         }
+
         private static string ReplaceImgString(string markdownText, string aid)
         {
             string url = string.Format(IMG_RESOURCE_SERVER_PREFIX_FMT, aid);
