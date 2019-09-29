@@ -16,5 +16,7 @@ namespace AutumnYin.API.Model
         public string Description { get; set; }
         [Required,JsonProperty("content")]
         public string Content { get; set; }
+        [Required, JsonIgnore]
+        public bool Enable { get; set; }
     }
 }

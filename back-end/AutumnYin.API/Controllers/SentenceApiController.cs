@@ -23,10 +23,11 @@ namespace AutumnYin.API.Controllers
             {
                 var query = from s in db.Sentences
                             orderby Guid.NewGuid()
+                            where s.Enable
                             select s;
                 if (query.Any())
                 {
-                    return query.First();
+                    return query.ElementAt(new Random().Next(0, query.Count()));
                 }
                 else {
                     return new Sentence()
