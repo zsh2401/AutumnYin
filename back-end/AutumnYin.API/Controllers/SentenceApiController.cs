@@ -27,7 +27,7 @@ namespace AutumnYin.API.Controllers
                             select s;
                 if (query.Any())
                 {
-                    int ranId = new Random().Next(1, query.Count());
+                    int ranId = new Random().Next(1, query.Count() + 1);
                     return (from q in query
                                  where q.Id == ranId
                                  select q).First();
