@@ -14,6 +14,9 @@ export default class SelectTab extends React.Component<ISelectTabProps>{
         return <ScrollMenu
         itemClass="cb-menu-item"
         itemClassActive="cb-menu-item-active"
+        translate={0}
+        alignCenter={false}
+        innerWrapperClass="no"
         onSelect={(key:string)=>this.onSelect(key)}
         selected={this.props.selectIndex + ""}
         data={this.renderElements()}/>

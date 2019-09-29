@@ -1,11 +1,11 @@
 .cb-menu-item{
     border:none;
     outline: none;
-    margin-right: 10px;
+    margin-right:5px;
 }
 .cb-menu-item-active{
     border:none;
     outline: none;
-    margin-right: 10px;
+    margin-right:5px;
     text-decoration: underline;
 }
