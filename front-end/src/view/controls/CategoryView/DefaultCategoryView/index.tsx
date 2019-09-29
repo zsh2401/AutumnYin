@@ -30,18 +30,29 @@ export default class DefaultCategoryView extends React.Component<DefaultCategory
                 this.setState({
                     status:"error"
                 });
+                this.rMeScroll.endError();
                 return;
             }
-            this.setState({
-                articles:result.slice(0,9),
-                status:"ok"
-            });
-            this.rMeScroll.endSuccess(result.length,result.length > 10);
+            setTimeout(()=>
+                {this.setState({
+                    articles:result.slice(0,9),
+                    status:"ok"
+                });
+                this.rMeScroll.endSuccess(result.length,result.length > 10);
+            },500);
+          
         },this.props.categoryCode,0,11);
     }
     up(){
+        if(this.state.status == "error"){
+            this.rMeScroll.endError();
+            return;
+        }
         ArticleApi.fetchArticleIndex((err,result)=>{
-            if(err != null)return;
+            if(err != null){
+                this.rMeScroll.endError();
+                return;
+            };
             this.setState({
                 articles:this.state.articles.concat(result.slice(0,9))
             });
@@ -80,14 +91,14 @@ export default class DefaultCategoryView extends React.Component<DefaultCategory
     }
     renderLoading(){
         return <div>
-            <Paragraph></Paragraph>
-            <Paragraph></Paragraph>
-            <Paragraph></Paragraph>
-            <Paragraph></Paragraph>
-            <Paragraph></Paragraph>
-            <Paragraph></Paragraph>
-            <Paragraph></Paragraph>
-            <Paragraph></Paragraph>
+            <Paragraph active></Paragraph>
+            <Paragraph active></Paragraph>
+            <Paragraph active></Paragraph>
+            <Paragraph active></Paragraph>
+            <Paragraph active></Paragraph>
+            <Paragraph active></Paragraph>
+            <Paragraph active></Paragraph>
+            <Paragraph active></Paragraph>
         </div>
     }
 }
