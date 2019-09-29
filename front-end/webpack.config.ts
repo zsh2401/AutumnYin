@@ -2,6 +2,7 @@ import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from 'offline-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+
 import webpack from "webpack"
 const config:webpack.Configuration = {
 	entry: './src/App.tsx',
@@ -22,6 +23,9 @@ const config:webpack.Configuration = {
 		new CopyWebpackPlugin([
 			{from:path.resolve(__dirname,"./src/assets/copy-to-root") ,to:path.resolve(__dirname,"./dist")}
 		]),
+		new webpack.DefinePlugin({
+			"isDev":process.env.NODE_ENV == "development" ? true: false
+		}),
 		new OfflinePlugin({
 			"Caches":"all"
 		}),
@@ -71,7 +75,7 @@ const config:webpack.Configuration = {
 	//@ts-ignore
 	devServer: {
 		open: true,
-		port:24303,
+		port: 24303,
 		host:"0.0.0.0",
 		historyApiFallback:true
 	},

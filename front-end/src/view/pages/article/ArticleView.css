@@ -5,3 +5,7 @@
     margin-right: auto;
     display: block;
 }
+.article-box{
+    width: 100%;
+    max-width: 500px;
+}
