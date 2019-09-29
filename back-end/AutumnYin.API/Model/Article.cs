@@ -18,7 +18,7 @@ namespace AutumnYin.API.Model
         public bool SetTop { get; set; }
         [DefaultValue(null), MaxLength(15),Required, JsonProperty("title")]
         public string Title { get; set; }
-        [DefaultValue(null), Required, JsonProperty("author")]
+        [DefaultValue(null), Required, MaxLength(10),JsonProperty("author")]
         public string Author { get; set; }
         [DefaultValue(null), MaxLength(50),Required, JsonProperty("img")]
         public string ImgUrl { get; set; }
@@ -30,7 +30,7 @@ namespace AutumnYin.API.Model
         public virtual DateTime CreationTime { get; set; }
         [DefaultValue(true), JsonProperty("comment")]
         public bool EnableComment { get; set; } = true;
-        [DefaultValue(null), MaxLength(15), JsonProperty("summary")]
+        [DefaultValue(null), MaxLength(40), JsonProperty("summary")]
         public string Summary { get; set; } = null;
         [Required, JsonProperty("content")]
         public string Content { get; set; }

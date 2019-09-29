@@ -7,6 +7,8 @@ namespace AutumnYin.API.Services.ArticleService.DatabaseService
     {
         private const string CONNECTION_SQL = "Server=localhost;Port=19370;database=auxyin;uid=root;Password=6808412;CharSet=utf8;SslMode=None";
         public virtual DbSet<Article> Articles { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Sentence> Sentences { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
