@@ -79,7 +79,10 @@ export default class DefaultCategoryView extends React.Component<DefaultCategory
         </RMeScroll>
     }
     renderList(){
-        return <ArticleList articles={this.state.articles}/>
+        return <div>
+            <ArticleList articles={this.state.articles}/>
+            {/* <p className="text-center" style={{color:"gray"}}>-- End --</p> */}
+        </div> 
     }
     renderError(){
         return <div className="text-center">

@@ -56,7 +56,7 @@ export default class SentenceView extends React.Component<any,SentenceViewState>
             <h3>{this.state.sentence.content}</h3>
             <p>{this.state.sentence.desc}</p>
             <Divider/>
-            <ValineComment/>
+            <ValineComment path="/"/>
         </div>
     }
 }

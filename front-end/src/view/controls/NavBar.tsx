@@ -19,7 +19,7 @@ export class NavBar extends React.Component<any,NavBarState>
         });
     }
     render(){
-        return <Navbar>
+        return <Navbar style={{background:"white",border:"1px black"}}>
         <Navbar.Header style={{marginRight:"20px"}}>
           <a onClick={()=>this.onSelect("/")} style={{lineHeight:"56px",marginLeft:"20px"}}>AUXYIN-秋隐</a>
         </Navbar.Header>

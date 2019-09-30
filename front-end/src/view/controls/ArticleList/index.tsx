@@ -20,7 +20,7 @@ export default class ArticleList extends React.Component<ArticleListProps>{
         </div>
     }
     private renderContent(){
-        return <div style={{maxWidth:"800px",marginLeft:"auto",marginRight:"auto"}}>
+        return <div>
             {this.props.articles.map(article=><ArticleCard key={article.id} article={article}/>)}
         </div>
     }

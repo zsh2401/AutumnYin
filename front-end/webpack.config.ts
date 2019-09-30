@@ -4,6 +4,7 @@ import OfflinePlugin from 'offline-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 
 import webpack from "webpack"
+let now = new Date();
 const config:webpack.Configuration = {
 	entry: './src/App.tsx',
 	output: {
@@ -14,6 +15,10 @@ const config:webpack.Configuration = {
 
 	plugins: [
 		new webpack.ProgressPlugin(),
+		new webpack.DefinePlugin({
+			"isDev":process.env.NODE_ENV == "development" ? true: false,
+			COMPILED_TIME:JSON.stringify(now.toLocaleString())
+		}),
 		new HtmlWebpackPlugin({
 			filename:"index.html",
 			template:"./src/App.html",
@@ -23,9 +28,6 @@ const config:webpack.Configuration = {
 		new CopyWebpackPlugin([
 			{from:path.resolve(__dirname,"./src/assets/copy-to-root") ,to:path.resolve(__dirname,"./dist")}
 		]),
-		new webpack.DefinePlugin({
-			"isDev":process.env.NODE_ENV == "development" ? true: false
-		}),
 		new OfflinePlugin({
 			"Caches":"all"
 		}),

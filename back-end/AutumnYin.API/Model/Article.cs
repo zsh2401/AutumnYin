@@ -16,7 +16,7 @@ namespace AutumnYin.API.Model
         public int Id { get; set; }
         [DefaultValue(false), JsonProperty("set_top")]
         public bool SetTop { get; set; }
-        [DefaultValue(null), MaxLength(15),Required, JsonProperty("title")]
+        [DefaultValue(null), MaxLength(30),Required, JsonProperty("title")]
         public string Title { get; set; }
         [DefaultValue(null), Required, MaxLength(10),JsonProperty("author")]
         public string Author { get; set; }

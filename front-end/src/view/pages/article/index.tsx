@@ -50,8 +50,10 @@ export default class ArticlePage extends React.Component<any,ArticlePageState>{
                 break;
         }
         return <StdLayout>
-            <div className="container">
+            <div className="d-flex flex-column h-100">
+                <div className="container flex-grow-1 c-container">
                 {view}
+                </div>
             </div>
         </StdLayout> 
     }
@@ -80,7 +82,7 @@ export default class ArticlePage extends React.Component<any,ArticlePageState>{
     renderOK(){
         return <div>
             <ArticleView info={this.state.article}/>
-                <Divider/>
+            <Divider/>
             <ValineComment path={"p-" + this.id}/>
         </div>
     }

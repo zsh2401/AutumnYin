@@ -5,6 +5,7 @@ import RSwiperSlide from '../../controls/RSwiper/RSwiperSlide'
 import SelectTab from '../../controls/TabMenu';
 import cm,{getCodesOnly,getNamesOnly} from '../../../common/categroies-manager'
 import cview from '../../controls/CategoryView'
+import { Divider } from 'rsuite';
 export interface IndexState{
     selectIndex:number;
 }
@@ -22,8 +23,8 @@ export default class Index extends React.Component<any,IndexState>{
     render(){
         let that = this;
         return <StdLayout headerTitle="AuTuMnYIN.COM 秋隐">
-            <div className="d-flex flex-column h-100">
-                <div className="flex-first container" style={{paddingTop:"15px"}}>
+            <div className="d-flex flex-column h-100 container c-container">
+                <div className="flex-first" style={{paddingTop:"15px"}}>
                     <SelectTab items={getNamesOnly()} selectIndex={this.state.selectIndex} selectionChanged={(index)=>this.selectChanged(index)}/>
                 </div>
                 <div className="flex-end h-100">

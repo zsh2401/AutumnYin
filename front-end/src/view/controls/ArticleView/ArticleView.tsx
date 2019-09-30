@@ -13,7 +13,7 @@ export default class ArticleView extends React.Component<ArticleViewProps>{
         if(this.props.info){
             return <div className="article-box">
                 <div className="container">
-                    <div className="d-flex flex-grow" style={{marginTop:"20px"}}>
+                    <div className="d-flex flex-grow" style={{paddingTop:"20px"}}>
                         <div className="flex-first"><h3 style={{color:"gray",background:"gray",marginRight:"10px"}}>_</h3></div>
                         <div className="flex-end">
                             <h3>{this.props.info.title}</h3>

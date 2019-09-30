@@ -5,4 +5,15 @@
 body{
     width: 100%;
     height: 100%;
+    background: whitesmoke;
+    /* background-image: linear-gradient( 135deg, #52E5E7 10%, #130CB7 100%); */
+}
+.c-container{
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+}
+.bg-normal{
+    background: white;
 }

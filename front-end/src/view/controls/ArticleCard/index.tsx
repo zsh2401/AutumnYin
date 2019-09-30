@@ -23,7 +23,7 @@ export default class ArticleCard extends React.Component<ArticleCardProps>{
         return <div onClick={()=>this.onClick()}>
             <div className="d-flex flex-row" style={{height:"84.375px"}}>
                 <div className="flex-first">
-                    <img style={{width:"150px",height:"84.375px",borderRadius:"5px"}}  src={this.props.article.img}/>
+                    <img style={{width:"120px",height:"84.375px",borderRadius:"5px"}}  src={this.props.article.img}/>
                 </div>
                 <div className="flex-end d-flex flex-column" style={{paddingLeft:"10px"}}>
                     <h6 className="flex-grow-1 flex-sm-grow-0">{this.GetSetTopMark()}{this.props.article.title}</h6>
