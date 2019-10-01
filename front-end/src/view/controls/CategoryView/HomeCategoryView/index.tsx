@@ -2,27 +2,47 @@ import React from 'react'
 import IArticle from '../../../../model/IArticle';
 import ArticleList from '../../ArticleList';
 import ArticleApi from '../../../../common/back-api/article'
+import CircularApi from '../../../../common/back-api/circular'
 import LodableView, { ILodableViewState } from '../../LodableView';
 import Swiper from 'swiper';
+import ICircularItem from '../../../../model/ICircularItem';
+import { Divider } from 'rsuite';
+import hs from '../../../../common/history-provider'
 export interface HomeCategoryViewState extends ILodableViewState{
     articles:Array<IArticle>;
-    topSwiperArticles:Array<IArticle>;
-    status:"ok" | "error" | "loading";
+    circularItems:Array<ICircularItem>;
+    swiperHeight:string;
 }
 export default class HomeCategoryView extends LodableView<any,HomeCategoryViewState>{
     onInitState(state:HomeCategoryViewState){
-        state.articles = [];
-        state.topSwiperArticles = [];
+        state.articles = null;
+        state.circularItems = null;
+        state.swiperHeight = null;
     }
     onRefresh(){
         ArticleApi.fetchArticleIndex((err,result)=>{
-            if(err){
+            console.log("ArticleApi callback");
+            if(this.state.status === "error" || err){
                 this.endError();
                 return;
             }
             this.setState({articles:result.slice(0,9)});
-            this.endSuccess(result.length - 1,result.length > 10);
+            if(this.state.circularItems){
+                this.endSuccess(result.length - 1,result.length > 10);
+            }
+            
         },"all",0,11);
+        CircularApi.getCircular((err,result)=>{
+            console.log("CircularApi callback");
+            if(this.state.status === "error" || err){
+                this.endError();
+                return;
+            }
+            this.setState({circularItems:result});
+            if(this.state.articles){
+                this.endSuccess(this.state.articles.length - 1,this.state.articles.length > 10);
+            }
+        })
     }
     onFetchingNew(){
         ArticleApi.fetchArticleIndex((err,result)=>{
@@ -38,35 +58,84 @@ export default class HomeCategoryView extends LodableView<any,HomeCategoryViewSt
     componentDidUpdate(prevProps,prevState:ILodableViewState){
         if(prevState.status != "ok" && this.state.status == "ok"){
             this.swiper = new Swiper(this.refs.theSwiper as HTMLDivElement,{
+                autoplay:{
+                    delay:3000
+                },
+                loop:true,
                 slidesPerView: 'auto',
                 centeredSlides: true,
                 spaceBetween: 30,
                 pagination: {
                     el: '.swiper-pagination',
-                    clickable: true
+                    clickable: true,
+                    dynamicBullets: true,
                   },
             });
-            
+        }
+        if(this.state.status == "ok" && this.state.swiperHeight == null){
+            this.bindSwiperHeightEvent();
+            this.updateSwiperHeight();
         }
     }
+    componentDidMount(){
+        super.componentDidMount();
+    }
+    private bindSwiperHeightEvent(){
+        let that =this;
+        window.addEventListener("resize",()=>{
+            that.updateSwiperHeight();
+        })
+    }
+    private updateSwiperHeight(){
+        let containerW = (this.refs.theWrapper as HTMLDivElement).offsetWidth;
+        this.setState({
+            swiperHeight : (containerW * 0.4285) + "px"
+        })
+    }
     renderOK(){
-        return <div>
-            <div ref="theSwiper" className="swiper-container" style={{height:"200px"}}>
+        return <div ref="theWrapper">
+            <div ref="theSwiper" className="swiper-container w-100" style={{height:this.state.swiperHeight || "200px"}}>
                 <div className="swiper-wrapper">
-                    <div className="swiper-slide">Slide 1</div>
-                    <div className="swiper-slide">Slide 2</div>
-                    <div className="swiper-slide">Slide 3</div>
-                    <div className="swiper-slide">Slide 4</div>
-                    <div className="swiper-slide">Slide 5</div>
-                    <div className="swiper-slide">Slide 6</div>
-                    <div className="swiper-slide">Slide 7</div>
-                    <div className="swiper-slide">Slide 8</div>
-                    <div className="swiper-slide">Slide 9</div>
-                    <div className="swiper-slide">Slide 10</div>
+                    {
+                        this.state.circularItems.map(c=><CircularItemView key={c.id} circularItem={c}/>)
+                    }
                 </div>
                 <div className="swiper-pagination"></div>
             </div>
+            <Divider>最新文章</Divider>
             <ArticleList articles={this.state.articles}/>
         </div> 
+    }
+}
+interface CircularItemViewProps{
+    circularItem:ICircularItem;
+}
+class CircularItemView extends React.Component<CircularItemViewProps>{
+    private onClick(){
+        let target = this.props.circularItem.target;
+        let url = target.substring(2);
+        let type = target[1];
+        switch (type) {
+            case "c":
+                window.location.href = url;
+                break;
+            case "p":
+                hs().push(url)
+                break;
+            case "o":
+                window.open(url);
+                break;
+            case "a":
+                hs().push("/p/" + url);
+                break;
+            default:
+                window.open(target)
+                break;
+        }
+    }
+    render(){
+        return <div className="swiper-slide" onClick={()=>this.onClick()}>
+            <img className="img-fluid w-100" src={this.props.circularItem.img_src}/>
+        </div>
     }
 }

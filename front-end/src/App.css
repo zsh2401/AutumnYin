@@ -17,3 +17,6 @@ body{
 .bg-normal{
     background: white;
 }
+.swiper-pagination-bullet-active{
+    background:whitesmoke !important;
+}
