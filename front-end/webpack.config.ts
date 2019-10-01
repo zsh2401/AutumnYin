@@ -21,7 +21,7 @@ const config:webpack.Configuration = {
 		}),
 		new HtmlWebpackPlugin({
 			filename:"index.html",
-			template:"./src/App.html",
+			template:"./src/AppPage.tsx",
 			hash:true,
 			xhtml:true
 		}),
