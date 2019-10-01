@@ -18,6 +18,6 @@ namespace AutumnYin.API.Model
         [Required,JsonIgnore]
         public bool Enable { get; set; }
         [Required,JsonProperty("target")]
-        public string Traget { get; set; }
+        public string Target { get; set; }
     }
 }

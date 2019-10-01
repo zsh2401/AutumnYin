@@ -21,13 +21,13 @@ namespace AutumnYin.API.Controllers
         }
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<CircularItem> Get()
+        public  ActionResult<IEnumerable<CircularItem>> Get()
         {
             using (db)
             {
-                return from circularItem in db.Circular
+                return (from circularItem in db.Circular
                        where circularItem.Enable
-                       select circularItem;
+                       select circularItem).ToArray();
             }
         }
     }
