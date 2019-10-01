@@ -37,14 +37,13 @@ export default class HomeCategoryView extends LodableView<any,HomeCategoryViewSt
     private swiper:Swiper;
     componentDidUpdate(prevProps,prevState:ILodableViewState){
         if(prevState.status != "ok" && this.state.status == "ok"){
-            if(this.swiper){
-                this.swiper.destroy(true,false);
-                return;
-            }
             this.swiper = new Swiper(this.refs.theSwiper as HTMLDivElement,{
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                spaceBetween: 30,
                 pagination: {
                     el: '.swiper-pagination',
-                    dynamicBullets: true,
+                    clickable: true
                   },
             });
             

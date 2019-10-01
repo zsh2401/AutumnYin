@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AutumnYin.API.Model
 {
@@ -20,7 +17,7 @@ namespace AutumnYin.API.Model
         public string Title { get; set; }
         [DefaultValue(null), Required, MaxLength(10),JsonProperty("author")]
         public string Author { get; set; }
-        [DefaultValue(null), MaxLength(50),Required, JsonProperty("img")]
+        [DefaultValue(null), MaxLength(1000),Required, JsonProperty("img")]
         public string ImgUrl { get; set; }
         [DefaultValue(null), MaxLength(15),JsonProperty("reprint")]
         public string Reprint { get; set; }
