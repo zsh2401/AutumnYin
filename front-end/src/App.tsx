@@ -20,6 +20,8 @@ if(!debugmx.isDev){
     console.log("is production env,install sw.js")
     OfflinePluginRuntime.install();
 }
+//@ts-ignore
+
 
 import AppRouter from './AppRouter'
 ReactDOM.render(AppRouter,document.querySelector("#app"));
