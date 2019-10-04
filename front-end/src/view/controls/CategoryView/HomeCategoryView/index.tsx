@@ -3,12 +3,12 @@ import IArticle from '../../../../model/IArticle';
 import ArticleList from '../../ArticleList';
 import ArticleApi from '../../../../common/back-api/article'
 import CircularApi from '../../../../common/back-api/circular'
-import LodableView, { ILodableViewState } from '../../LodableView';
+import LodableView, { ICateogoryViewBaseState } from '../../CateogoryViewBase';
 import Swiper from 'swiper';
 import ICircularItem from '../../../../model/ICircularItem';
 import { Divider } from 'rsuite';
 import hs from '../../../../common/history-provider'
-export interface HomeCategoryViewState extends ILodableViewState{
+export interface HomeCategoryViewState extends ICateogoryViewBaseState{
     articles:Array<IArticle>;
     circularItems:Array<ICircularItem>;
     swiperHeight:string;
@@ -55,7 +55,7 @@ export default class HomeCategoryView extends LodableView<any,HomeCategoryViewSt
         },"all",this.state.articles.length,11);
     }
     private swiper:Swiper;
-    componentDidUpdate(prevProps,prevState:ILodableViewState){
+    componentDidUpdate(prevProps,prevState:HomeCategoryViewState){
         if(prevState.status != "ok" && this.state.status == "ok"){
             this.swiper = new Swiper(this.refs.theSwiper as HTMLDivElement,{
                 autoplay:{
@@ -93,7 +93,7 @@ export default class HomeCategoryView extends LodableView<any,HomeCategoryViewSt
         })
     }
     renderOK(){
-        return <div ref="theWrapper">
+        return <div className="xxxx" ref="theWrapper">
             <div ref="theSwiper" className="swiper-container w-100" style={{height:this.state.swiperHeight || "200px"}}>
                 <div className="swiper-wrapper">
                     {

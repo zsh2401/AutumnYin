@@ -1,5 +1,4 @@
-import React, { ReactNode, lazy } from 'react'
-import RSwiper from '..';
+import React from 'react'
 export interface RSwiperSlideProps{
     lazy?:boolean;
 }

@@ -1,24 +1,34 @@
 import React from 'react'
 import RMeScroll from '../RMescroll';
 import Paragraph from 'rsuite/lib/Placeholder/PlaceholderParagraph';
-export interface ILodableViewState{
-    status:"ok" | "error" | "loading";
-}
-export default abstract class LodableView<TProps extends any,TState extends ILodableViewState> extends React.Component<TProps,TState>{
+import { ICateogoryViewBaseState,getDefaultState } from './State';
+import {ICateogoryViewBaseProps} from './Props'
+export * from './Props'
+export * from './State'
+export default abstract class CateogoryViewBase<TProps extends ICateogoryViewBaseProps = ICateogoryViewBaseProps,TState extends ICateogoryViewBaseState = ICateogoryViewBaseState>
+ extends React.Component<TProps,TState>{
+    protected triggerDownWhenDidMount:boolean = true;
     componentWillMount(){
-        let state:ILodableViewState = {status:"loading"}
+        let state = getDefaultState();
         //@ts-ignore
         this.onInitState(state);
         this.setState(state);
     }
     private downHandler(){
-        this.onRefresh();
+        this.onRefresh(this.updater);
     }
     private upHandler(){
-        this.onFetchingNew();
+        this.onFetchingNew(this.updater);
+    }
+    private updater(key:string,v:string){
+        let _newData = {};
+        _newData[key] = v;
+        this.setState(_newData);
     }
     componentDidMount(){
-        this.mainScroll.triggerDownScroll();
+        if(this.triggerDownWhenDidMount){
+            this.mainScroll.triggerDownScroll();
+        }
     }
     protected get mainScroll():RMeScroll{
         return this.refs["mainScroll"] as RMeScroll;
@@ -36,10 +46,13 @@ export default abstract class LodableView<TProps extends any,TState extends ILod
                 view = this.renderLoading();
                 break;
         }
-        return <div style={{paddingTop:"15px"}}>
+        return <div>
             <RMeScroll ref="mainScroll" downCallback={()=>this.downHandler()} upCallback={()=>this.upHandler()}>
-            {view}
-        </RMeScroll>
+                <div style={{paddingTop:"15px"}}>
+                    {view}
+                </div>
+                
+            </RMeScroll>
         </div> 
     }
     protected endError(){
@@ -50,18 +63,19 @@ export default abstract class LodableView<TProps extends any,TState extends ILod
         this.mainScroll.endSuccess(dataSize,hasNext);
         this.setState({status:"ok"});
     }
-    protected onRefresh(){}
-    protected onFetchingNew(){}
+    protected onRefresh(updater:(key:string,value:any)=>void){}
+    protected onFetchingNew(updater:(key:string,value:any)=>void){}
     protected onInitState(state:TState){}
     protected renderError(){
-        return <div className="text-center">
-            <br/>
+        return <div className="text-center"><br/>
             <h3 >发生异常</h3>
             <p>请检查网络</p>
             <p><i>How does it feel got no one on your side?</i></p>
         </div> 
     }
-    protected renderOK(){}
+    protected renderOK(){
+        return <div>OK</div>
+    }
     protected renderLoading(){
         return <div>
             <Paragraph active></Paragraph>

@@ -12,7 +12,7 @@ export default class StdLayout extends React.Component<StdLayoutProps>{
                 <div className="flex-grow-0">
                     <NavBar></NavBar>
                 </div>
-                <div className="flex-grow-1 h-100" style={{overflowY:"auto"}}>
+                <div className="flex-grow-1 h-100">
                     {this.props.children}
                 </div>
             </div>

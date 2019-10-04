@@ -6,6 +6,7 @@ export interface RSwiperProps{
     children:React.ReactElement<RSwiperSlide>[];
     slideChange?:(slideIndex:number)=>void;
     selectIndex?:number;
+    className?:string;
 }
 export interface RSwiperState{
     slides:Slide[];
@@ -54,7 +55,7 @@ export default class RSwiper extends React.Component<RSwiperProps,RSwiperState>{
         this.swiper.slideTo(this.props.selectIndex || 0);
     }
     render(){
-        return <div ref="mainDiv" className="swiper-container h-100">
+        return <div ref="mainDiv" className={"swiper-container h-100" + this.props.className}>
             <div className="swiper-wrapper">
                 {this.state.slides.map((slide,index)=>{
                     return <div className="swiper-slide" key={index}>{slide.element}</div>

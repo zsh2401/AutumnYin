@@ -1,12 +1,12 @@
 import { DeveloperCardProps, OpenSrouceProjectCardProps } from ".";
 
 export const developerData:Array<DeveloperCardProps> = [
-    {name:"zsh2401",desc:"后端开发与实现",iconSrc:"https://s2.ax1x.com/2019/09/29/u8RuZV.th.jpg"},
-    {name:"my0402",desc:"数据库维护/游戏专栏编辑",iconSrc:"https://s2.ax1x.com/2019/09/30/uYKj5F.th.jpg"}
+    {name:"zsh2401",desc:"前后端开发与实现",iconSrc:"https://s2.ax1x.com/2019/09/29/u8RuZV.th.jpg"}
 ];
 export const editors:Array<DeveloperCardProps> = [
+    {name:"my0402",desc:"审核/文章编辑",iconSrc:"https://s2.ax1x.com/2019/09/30/uYKj5F.th.jpg"},
+    {name:"ljy",desc:"审核/文章编辑",iconSrc:"https://s2.ax1x.com/2019/09/30/uYJsmj.th.jpg"},
     {name:"hxy2000",desc:"英读专栏编辑",iconSrc:"https://s2.ax1x.com/2019/09/30/uYir5t.th.png"},
-    {name:"ljy",desc:"动漫/游戏专栏编辑",iconSrc:"https://s2.ax1x.com/2019/09/30/uYJsmj.th.jpg"},
     {name:"yh0422",desc:"科技专栏编辑",iconSrc:"https://s2.ax1x.com/2019/09/30/uYYgDH.jpg"},
     {name:"lzh",desc:"军武专栏编辑",iconSrc:"favicon.png"},
     {name:"dyc",desc:"游戏专栏编辑",iconSrc:"favicon.png"},
