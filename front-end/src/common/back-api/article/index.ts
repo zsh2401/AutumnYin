@@ -1,7 +1,6 @@
 import IArticle from "../../../model/IArticle";
 import backapi from '../'
 export default class ArticleApi{
-    // private static readonly API_URL = debugmx.isDev ? "https://localhost:44305/" : "https://api.auxyin.com:1937/";
     private static readonly API_URL = backapi.API_URL_PREFIX;
     static fetchArticle(id:number,callback:(err:any,article:IArticle)=>void){
         let url = this.API_URL + "/article/" + id;

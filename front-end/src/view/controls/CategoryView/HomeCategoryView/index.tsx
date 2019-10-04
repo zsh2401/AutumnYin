@@ -20,17 +20,30 @@ export default class HomeCategoryView extends LodableView<any,HomeCategoryViewSt
         state.swiperHeight = null;
     }
     onRefresh(){
+        //@ts-ignore
+        let tmpState : HomeCategoryViewState= {};
+        let hasNext = true;
+        let ender = (articlesData : Array<IArticle>,circularData :Array<ICircularItem>)=>{
+            if(articlesData){
+                tmpState.articles = articlesData; 
+            }
+            if(circularData){
+                tmpState.circularItems = circularData;
+            }
+            if(tmpState.articles && tmpState.circularItems){
+                console.log(tmpState);
+                this.setState(tmpState);
+                this.endSuccess(tmpState.articles.length,hasNext);
+            }
+        };
         ArticleApi.fetchArticleIndex((err,result)=>{
             console.log("ArticleApi callback");
             if(this.state.status === "error" || err){
                 this.endError();
                 return;
             }
-            this.setState({articles:result.slice(0,9)});
-            if(this.state.circularItems){
-                this.endSuccess(result.length - 1,result.length > 10);
-            }
-            
+            hasNext = result.length > 10;
+            ender(result.slice(0,10),null);
         },"all",0,11);
         CircularApi.getCircular((err,result)=>{
             console.log("CircularApi callback");
@@ -38,10 +51,7 @@ export default class HomeCategoryView extends LodableView<any,HomeCategoryViewSt
                 this.endError();
                 return;
             }
-            this.setState({circularItems:result});
-            if(this.state.articles){
-                this.endSuccess(this.state.articles.length - 1,this.state.articles.length > 10);
-            }
+            ender(null,result);
         })
     }
     onFetchingNew(){

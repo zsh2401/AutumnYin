@@ -1,5 +1,4 @@
 import React from "react"
-import {Card} from 'react-bootstrap'
 import "./index.css"
 import hp from '../../../common/history-provider'
 import Placeholder from 'rsuite/lib/Placeholder';

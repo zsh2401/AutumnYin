@@ -12,9 +12,31 @@ class AppPage extends React.Component{
 
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mescroll.js@1.4.1/mescroll.min.css"></link>
             <script src="https://cdn.jsdelivr.net/npm/mescroll.js@1.4.1/mescroll.min.js" charSet="utf-8"></script>
+
+            <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+            <script src="https://cdn.bootcss.com/react/16.9.0-rc.0/umd/react.production.min.js"></script>
+            <script src="https://cdn.bootcss.com/react-dom/16.9.0-rc.0/umd/react-dom.production.min.js"></script>
+            <script src="https://cdn.bootcss.com/react-router-dom/5.0.1/react-router-dom.min.js"></script>
+
+            <link href="https://cdn.bootcss.com/Swiper/4.5.1/css/swiper.min.css" rel="stylesheet"></link>
+            <script src="https://cdn.bootcss.com/Swiper/4.5.1/js/swiper.min.js"></script>
+
+            <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"></ link>
+            <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+            <link href="https://cdn.bootcss.com/rsuite/4.0.0/styles/rsuite-default.min.css" rel="stylesheet"></link>
+            <script src="https://cdn.bootcss.com/rsuite/4.0.0/rsuite.min.js"></script>
+
+            <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.js"></script>
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+            <script src="https://cdn.bootcss.com/marked/0.7.0/marked.min.js"></script>
+
+
             </head>
             <body>
-                <div id="app" style={{height:"100%",width:"100%",position: "fixed"}}></div>
+                <div id="app" style={{height:"100%",width:"100%",position: "fixed"}}>Loading</div>
             </body>
     </html>
     }

@@ -2,11 +2,12 @@ import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from 'offline-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+const IS_DEV_ENV = process.env.NODE_ENV == "development" ? true: false;
 
 import webpack from "webpack"
 let now = new Date();
 const config:webpack.Configuration = {
-	entry: './src/App.tsx',
+	entry: "./src/App.tsx",
 	output: {
 		filename: 'app.js',
 		path: path.resolve(__dirname, 'dist'),
@@ -32,6 +33,17 @@ const config:webpack.Configuration = {
 			"Caches":"all"
 		}),
 	],
+	externals:{
+		react:"React",
+		"react-dom":"ReactDOM",
+		'valine':'Valine',
+		'leancloud-storage':'AV',
+		"marked":"marked",
+		"swiper":"Swiper",
+		"rsuite":"rsuite",
+		"jquery":"$",
+		// "react-router-dom":"ReactRouterDOM",
+	},
 	module: {
 		rules: [
 			{ test: /\.ts(x?)$/, use: 'ts-loader' },

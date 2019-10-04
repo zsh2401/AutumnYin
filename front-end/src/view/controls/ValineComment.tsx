@@ -1,6 +1,6 @@
 import React from 'react'
 import idg from '../../common/id-generator'
-import "leancloud-storage"
+import AV from "leancloud-storage"
 import Valine from 'valine'
 const APP_ID = "gLFeD2ydyxP4PY4D8oaMQRai-gzGzoHsz";
 const APP_KEY = "66XqMWAGiQxt4MuHuUSIXon4";

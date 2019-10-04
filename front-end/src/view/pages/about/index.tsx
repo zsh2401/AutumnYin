@@ -7,7 +7,7 @@ import { developerData, osProjects, editors } from "./data";
 export default class About extends React.Component{
     render(){
         return <StdLayout>
-            <div className="d-flex flex-column container bg-normal" style={{minHeight:"100%"}}>
+            <div className="d-flex flex-column container bg-normal h-100 position-relative overflow-auto">
                 <div className="flex-grow-1">
                     <br/>
                     <img className="d-block img-fluid" style={{marginLeft:"auto",marginRight:"auto"}} src={require("../../../assets/copy-to-root/favicon.png")}/>
@@ -18,16 +18,15 @@ export default class About extends React.Component{
                     </div>
                     <Divider/>
                     <div className="row">
-
                         <div className="col-sm-6">
                             <h6 className="text-center">主要开发人员</h6>
                             <div className="row">
-                                {developerData.map(d=> <DeveloperCard name={d.name} desc={d.desc} iconSrc={d.iconSrc}/>)}
+                                {developerData.map(d=> <DeveloperCard key={d.name} name={d.name} desc={d.desc} iconSrc={d.iconSrc}/>)}
                             </div>
                             <Divider/>
                             <h6 className="text-center">内容提供</h6>
                             <div className="row">
-                                {editors.map(d=> <DeveloperCard name={d.name} desc={d.desc} iconSrc={d.iconSrc}/>)}
+                                {editors.map(d=> <DeveloperCard key={d.name} name={d.name} desc={d.desc} iconSrc={d.iconSrc}/>)}
 
                             </div>
                         </div>

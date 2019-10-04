@@ -51,7 +51,7 @@ export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollS
 
     render(){
         return <div className="mescroll"  style={{height:"100%",position:"fixed"}} ref={_div=>this.meScrollDiv = _div}>
-            <div>
+            <div style={{paddingRight:"10px"}}>
                 {this.props.children}
             </div>
         </div>

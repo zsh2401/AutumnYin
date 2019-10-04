@@ -50,9 +50,9 @@ export default class ArticlePage extends React.Component<any,ArticlePageState>{
                 break;
         }
         return <StdLayout>
-            <div className="d-flex flex-column h-100">
+            <div className="d-flex flex-column h-100" style={{position:"relative",overflowY:"auto"}}>
                 <div className="container flex-grow-1 c-container">
-                {view}
+                    {view}
                 </div>
             </div>
         </StdLayout> 

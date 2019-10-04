@@ -1,15 +1,5 @@
 import ReactDOM from 'react-dom'
 
-//jQuery
-import "jquery/dist/jquery"
-
-//bootstrap
-import "bootstrap"
-import "./view/css/bs-simplex/_entry.scss"
-
-//rsuite
-import 'rsuite/dist/styles/rsuite-default.css';
-
 import "./App.css"
 
 import OfflinePluginRuntime from "offline-plugin/runtime"
@@ -17,8 +7,11 @@ import OfflinePluginRuntime from "offline-plugin/runtime"
 import debugmx from "./common/debug-mx"
 
 if(!debugmx.isDev){
+    console.log("wtf");
     console.log("is production env,install the ServiceWorker")
     OfflinePluginRuntime.install();
+    OfflinePluginRuntime.update();
+    OfflinePluginRuntime.applyUpdate();
 }
 //@ts-ignore
 
