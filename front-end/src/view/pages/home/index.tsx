@@ -6,6 +6,9 @@ import SelectTab from '../../controls/TabMenu';
 import cm,{getCodesOnly,getNamesOnly} from '../../../common/categroies-manager'
 import cview from '../../controls/CategoryView'
 import { Divider } from 'rsuite';
+import DebugMx from '../../../common/debug-mx';
+import hs from '../../../common/history-provider'
+import { Redirect } from 'react-router';
 export interface IndexState{
     selectIndex:number;
 }
@@ -21,6 +24,10 @@ export default class Index extends React.Component<any,IndexState>{
         });
     }
     render(){
+        if(DebugMx.isFirstTimeLaunchApp){
+            hs().push("/start");
+            return null;
+        }
         let that = this;
         return <StdLayout headerTitle="AuTuMnYIN.COM 秋隐">
             <div className="d-flex flex-column h-100 container c-container" style={{position:"relative"}}>

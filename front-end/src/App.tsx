@@ -15,6 +15,10 @@ if(!debugmx.isDev){
 }
 //@ts-ignore
 
-
+import React from 'react';
 import AppRouter from './AppRouter'
+import DebugMx from './common/debug-mx';
+import StartPage from './view/pages/start';
 ReactDOM.render(AppRouter,document.querySelector("#app"));
+
+
