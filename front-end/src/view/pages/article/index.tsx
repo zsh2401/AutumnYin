@@ -49,13 +49,14 @@ export default class ArticlePage extends React.Component<any,ArticlePageState>{
                 view = this.renderError();
                 break;
         }
-        return <StdLayout>
-            <div className="d-flex flex-column h-100" style={{position:"relative",overflowY:"auto"}}>
-                <div className="container flex-grow-1 c-container">
-                    {view}
-                </div>
+        return  <StdLayout>
+        <div className="d-flex flex-column h-100" style={{position:"relative",overflowY:"auto"}}>
+            <div className="container flex-grow-1 c-container">
+                {view}
             </div>
-        </StdLayout> 
+        </div>
+    </StdLayout> 
+        
     }
     renderError(){
         return <div className="text-center">

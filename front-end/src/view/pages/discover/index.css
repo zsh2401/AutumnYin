@@ -1,0 +1,22 @@
+.discover-card{
+    height: 100px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: whitesmoke;
+}
+.discover-card-0{
+    background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
+}
+.discover-card-1{
+    background-image: linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%);
+}
+.discover-card-2{
+    background-image: linear-gradient( 135deg, #FAB2FF 10%, #1904E5 100%);
+}
+.discover-card-3{
+    background-image: linear-gradient( 135deg, #FFAA85 10%, #B3315F 100%);
+}
+.discover-card-4{
+    background-image: linear-gradient( 135deg, #FDD819 10%, #E80505 100%);
+}

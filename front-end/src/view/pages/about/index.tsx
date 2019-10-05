@@ -7,7 +7,8 @@ import { developerData, osProjects, editors } from "./data";
 export default class About extends React.Component{
     render(){
         return <StdLayout>
-            <div className="d-flex flex-column container bg-normal h-100 position-relative overflow-auto">
+            <div className="h-100 position-relative overflow-auto">
+            <div className="d-flex flex-column container bg-normal">
                 <div className="flex-grow-1">
                     <br/>
                     <img className="d-block img-fluid" style={{marginLeft:"auto",marginRight:"auto"}} src={require("../../../assets/copy-to-root/favicon.png")}/>
@@ -43,6 +44,7 @@ export default class About extends React.Component{
                     <p>Copyright © 2019 zsh2401 and other members,All Rights Reserved</p>
                     <i>Love Yin For Good</i>
                 </div>
+            </div>
             </div>
         </StdLayout>
     }
