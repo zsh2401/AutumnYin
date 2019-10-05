@@ -31,13 +31,13 @@ export default class HomeCategoryView extends LodableView<any,HomeCategoryViewSt
                 tmpState.circularItems = circularData;
             }
             if(tmpState.articles && tmpState.circularItems){
-                console.log(tmpState);
+                // console.log(tmpState);
                 this.setState(tmpState);
                 this.endSuccess(tmpState.articles.length,hasNext);
             }
         };
         ArticleApi.fetchArticleIndex((err,result)=>{
-            console.log("ArticleApi callback");
+            // console.log("ArticleApi callback");
             if(this.state.status === "error" || err){
                 this.endError();
                 return;
@@ -46,7 +46,7 @@ export default class HomeCategoryView extends LodableView<any,HomeCategoryViewSt
             ender(result.slice(0,10),null);
         },"all",0,11);
         CircularApi.getCircular((err,result)=>{
-            console.log("CircularApi callback");
+            // console.log("CircularApi callback");
             if(this.state.status === "error" || err){
                 this.endError();
                 return;

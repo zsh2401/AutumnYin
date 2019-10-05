@@ -19,4 +19,8 @@ export default class DebugMx{
             localStorage.setItem(KEY_FAPP,"www");
         }    
     }
+    static get version():string{
+        //@ts-ignore
+        return APP_VERSION;
+    }
 }

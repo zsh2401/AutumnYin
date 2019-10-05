@@ -6,6 +6,7 @@ class AppPage extends React.Component{
         <head>
             <title>秋隐</title>
             <meta charSet='utf-8'></meta>
+            <link rel="apple-touch-icon" sizes="256x256" href="app_icon.png"></link>
             <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"></meta>
             <link rel="manifest" href="/manifest.json"></link>
             <meta name="apple-mobile-web-app-status-bar-style" content="white"></meta>

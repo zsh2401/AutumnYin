@@ -36,7 +36,7 @@ export default class StartPage extends React.Component{
                 </div>
                 <div className="flex-grow-0">
                     <p className="text-center text-white">
-                        版本编译时间: {DebugMx.compiledTime}
+                        v{DebugMx.version}
                     </p>
                     <br/>
                 </div>

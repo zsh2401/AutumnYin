@@ -9,7 +9,7 @@ export const editors:Array<DeveloperCardProps> = [
     {name:"hxy2000",desc:"英读专栏编辑",iconSrc:"https://s2.ax1x.com/2019/09/30/uYir5t.th.png"},
     {name:"yh0422",desc:"科技专栏编辑",iconSrc:"https://s2.ax1x.com/2019/09/30/uYYgDH.jpg"},
     {name:"lzh",desc:"军武专栏编辑",iconSrc:"favicon.png"},
-    {name:"dyc",desc:"游戏专栏编辑",iconSrc:"favicon.png"},
+    {name:"dyc",desc:"游戏专栏编辑",iconSrc:"https://ftp.bmp.ovh/imgs/2019/09/f21140941b3f9fb6.jpg"},
     {name:"tq",desc:"游戏专栏编辑",iconSrc:"favicon.png"},
 ];
 export const osProjects:Array<OpenSrouceProjectCardProps> = [

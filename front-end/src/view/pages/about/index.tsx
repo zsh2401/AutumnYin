@@ -14,7 +14,7 @@ export default class About extends React.Component{
                     <div className="text-center">
                         <h3>秋隐</h3>
                         <h6>WWW.<span style={{color:"#F57C00"}}>A</span>UX<span style={{color:"#FF4081"}}>Y</span>IN.COM</h6>
-                        <p>编译时间-{debugmx.compiledTime}</p>
+                        <p>v{debugmx.version}<br/>编译时间-{debugmx.compiledTime}</p>
                     </div>
                     <Divider/>
                     <div className="row">

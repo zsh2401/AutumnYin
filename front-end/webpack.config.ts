@@ -18,7 +18,8 @@ const config:webpack.Configuration = {
 		new webpack.ProgressPlugin(),
 		new webpack.DefinePlugin({
 			"isDev":process.env.NODE_ENV == "development" ? true: false,
-			COMPILED_TIME:JSON.stringify(now.toLocaleString())
+			COMPILED_TIME:JSON.stringify(now.toLocaleString()),
+			APP_VERSION:JSON.stringify(require('./package.json').version),
 		}),
 		new HtmlWebpackPlugin({
 			filename:"index.html",
