@@ -56,8 +56,8 @@ export default abstract class CateogoryViewBase<TProps extends ICateogoryViewBas
         </div> 
     }
     protected endError(){
-        this.mainScroll.endError();
         this.setState({status:"error"});
+        this.mainScroll.endError();
     }
     protected endSuccess(dataSize:number,hasNext:boolean){
         this.mainScroll.endSuccess(dataSize,hasNext);

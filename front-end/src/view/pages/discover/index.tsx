@@ -1,7 +1,8 @@
 import React from "react"
 import StdLayout from "../../layout/StdLayout";
 import "./index.css"
-import { Divider } from "rsuite";
+import { Divider, Button } from "rsuite";
+import hs from '../../../common/history-provider'
 export default class Discover extends React.Component{
     render(){
         return <StdLayout>
@@ -25,6 +26,12 @@ export default class Discover extends React.Component{
                         <a href="https://github.com/zsh2401/AutumnYin/blob/master/LICENSE" target="_blank">开源协议</a><br/>
                         <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a><br/>
                         <a href="mailto://zsh2401@163.com" target="_blank">发送邮件到:zsh2401@163.com</a><br/>
+                        <Divider></Divider>
+                        <Button onClick={()=>{
+                            localStorage.clear();
+                            hs().push("/")
+                            // window.location.reload();
+                        }} appearance="link">重置应用设置</Button>
                     </div>
                 </div>
                 <div className="flex-grow-0 text-center">
