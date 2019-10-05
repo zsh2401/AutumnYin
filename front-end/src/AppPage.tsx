@@ -34,7 +34,6 @@ class AppPage extends React.Component{
 
             <script src="https://cdn.bootcss.com/marked/0.7.0/marked.min.js"></script>
 
-            <script src="https://cdn.jsdelivr.net/npm/bideo.js@1.0.0/bideo.js"></script>
             </head>
             <body>
                 <div id="app" style={{height:"100%",width:"100%",position: "fixed"}}>Loading</div>
