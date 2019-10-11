@@ -31,7 +31,7 @@ export default class ArticleCard extends React.Component<ArticleCardProps>{
                     </div>
                     <p className="flex-grow-0">编辑: {this.props.article.author}</p>
                     <div className="flex-grow-0">
-                        <span>{this.props.article.crt_time}</span>
+                        <span>{this.props.article.crt_time.replace("T"," ")}</span>
                     </div>
                 </div>
             </div>
