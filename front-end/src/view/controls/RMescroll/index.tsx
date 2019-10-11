@@ -1,6 +1,7 @@
 import React from 'react'
 import RMeScrollProps from './RMeScrollProps'
 import RMeScrollState from './RMeScrollState'
+import MeScroll from "../../../lib/mescroll/"
 export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollState>{
     private meScrollDiv:HTMLDivElement = null;
     private mescrollObj:any = null;
@@ -16,7 +17,6 @@ export default class RMeScroll extends React.Component<RMeScrollProps,RMeScrollS
                 noMoreSize:0
             }
         }
-        //@ts-ignore
         this.mescrollObj = new MeScroll(this.meScrollDiv,
             {
             down:{callback:()=>this.downCallback(),auto:false},

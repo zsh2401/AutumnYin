@@ -34,17 +34,17 @@ const config:webpack.Configuration = {
 			"Caches":"all"
 		}),
 	],
-	externals:{
-		react:"React",
-		"react-dom":"ReactDOM",
-		'valine':'Valine',
-		'leancloud-storage':'AV',
-		"marked":"marked",
-		"swiper":"Swiper",
-		"rsuite":"rsuite",
-		"jquery":"$",
-		// "react-router-dom":"ReactRouterDOM",
-	},
+	// externals:{
+	// 	react:"React",
+	// 	"react-dom":"ReactDOM",
+	// 	'valine':'Valine',
+	// 	'leancloud-storage':'AV',
+	// 	"marked":"marked",
+	// 	"swiper":"Swiper",
+	// 	"rsuite":"rsuite",
+	// 	"jquery":"$",
+	// 	// "react-router-dom":"ReactRouterDOM",
+	// },
 	module: {
 		rules: [
 			{ test: /\.ts(x?)$/, use: 'ts-loader' },

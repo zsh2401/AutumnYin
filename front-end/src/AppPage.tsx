@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/server'
-class AppPage extends React.Component{
-    render(){
-        return <html lang="zh">
+const AppPage = <html lang="zh">
         <head>
             <title>秋隐</title>
             <meta charSet='utf-8'></meta>
@@ -11,10 +9,10 @@ class AppPage extends React.Component{
             <link rel="manifest" href="/manifest.json"></link>
             <meta name="apple-mobile-web-app-status-bar-style" content="white"></meta>
 
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mescroll.js@1.4.1/mescroll.min.css"></link>
-            <script src="https://cdn.jsdelivr.net/npm/mescroll.js@1.4.1/mescroll.min.js" charSet="utf-8"></script>
+            {/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mescroll.js@1.4.1/mescroll.min.css"></link>
+            <script src="https://cdn.jsdelivr.net/npm/mescroll.js@1.4.1/mescroll.min.js" charSet="utf-8"></script> */}
 
-            <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+            {/* <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
             <script src="https://cdn.bootcss.com/react/16.9.0-rc.0/umd/react.production.min.js"></script>
             <script src="https://cdn.bootcss.com/react-dom/16.9.0-rc.0/umd/react-dom.production.min.js"></script>
@@ -32,15 +30,14 @@ class AppPage extends React.Component{
             <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.js"></script>
             <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
-            <script src="https://cdn.bootcss.com/marked/0.7.0/marked.min.js"></script>
+            <script src="https://cdn.bootcss.com/marked/0.7.0/marked.min.js"></script> */}
 
             </head>
             <body>
                 <div id="app" style={{height:"100%",width:"100%",position: "fixed"}}>Loading</div>
             </body>
     </html>
-    }
-}
+    
 export default function(props){
-    return ReactDOM.renderToString(<AppPage/>)
+    return ReactDOM.renderToString(AppPage)
 }
