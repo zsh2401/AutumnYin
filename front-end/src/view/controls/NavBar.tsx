@@ -14,13 +14,11 @@ export class NavBar extends React.Component<any,NavBarState>
     }
     onSelect(eventKey:string){
         hs().push(eventKey);
-        // this.setState({
-        //     selectedKey:eventKey
-        // });
     }
     render(){
         let that = this;
-        return <Navbar style={{background:"white",border:"1px black"}}>
+        return <div>
+          <Navbar style={{background:"white"}}>
         <Navbar.Header style={{marginRight:"20px"}}>
           <a onClick={()=>that.onSelect("/")} style={{lineHeight:"56px",marginLeft:"20px"}}>AUXYIN-秋隐</a>
         </Navbar.Header>
@@ -31,5 +29,7 @@ export class NavBar extends React.Component<any,NavBarState>
           </Nav>
         </Navbar.Body>
       </Navbar>
+      <div style={{height:"1px",width:"100%",background:"lightgray"}}></div>
+        </div> 
     }
 }

@@ -3,7 +3,7 @@ import StdLayout from "../../layout/StdLayout";
 import { Divider, Avatar, Icon } from "rsuite";
 import debugmx from '../../../common/debug-mx'
 import "./index.css"
-import { developerData, osProjects, editors } from "./data";
+import { developerData, osBProjects,osFProjects, editors } from "./data";
 export default class About extends React.Component{
     render(){
         return <StdLayout>
@@ -17,15 +17,14 @@ export default class About extends React.Component{
                         <h6>WWW.<span style={{color:"#F57C00"}}>A</span>UX<span style={{color:"#FF4081"}}>Y</span>IN.COM</h6>
                         <p>v{debugmx.version}<br/>编译时间-{debugmx.compiledTime}</p>
                     </div>
-                    <Divider/>
+                    {/* <Divider/> */}
                     <div className="row">
                         <div className="col-sm-6">
-                            <h6 className="text-center">主要开发人员</h6>
+                            <Divider>主要开发人员</Divider>
                             <div className="row">
                                 {developerData.map(d=> <DeveloperCard key={d.name} name={d.name} desc={d.desc} iconSrc={d.iconSrc}/>)}
                             </div>
-                            <Divider/>
-                            <h6 className="text-center">内容提供</h6>
+                            <Divider>内容提供</Divider>
                             <div className="row">
                                 {editors.map(d=> <DeveloperCard key={d.name} name={d.name} desc={d.desc} iconSrc={d.iconSrc}/>)}
 
@@ -33,9 +32,13 @@ export default class About extends React.Component{
                         </div>
 
                         <div className="col-sm-6">
-                            <h6 className="text-center">使用的主要开源技术</h6>
+                            <Divider>使用的前端开源技术</Divider>
                             <div className="row">
-                                {osProjects.map(d=><OpenSrouceProjectCard key={d.name} name={d.name} url={d.url} use={d.use} description={d.description} iconSrc={d.iconSrc}/>)}
+                                {osFProjects.map(d=><OpenSrouceProjectCard key={d.name} name={d.name} url={d.url} use={d.use} description={d.description} iconSrc={d.iconSrc}/>)}
+                            </div>
+                            <Divider>使用的后端开源技术</Divider>
+                            <div className="row">
+                                {osBProjects.map(d=><OpenSrouceProjectCard key={d.name} name={d.name} url={d.url} use={d.use} description={d.description} iconSrc={d.iconSrc}/>)}
                             </div>
                         </div>
                     </div>

@@ -30,7 +30,7 @@ export default class Index extends React.Component<any,IndexState>{
         }
         let that = this;
         return <StdLayout headerTitle="AuTuMnYIN.COM 秋隐">
-            <div className="d-flex flex-column h-100 container c-container" style={{position:"relative"}}>
+            <div className="d-flex flex-column h-100 container c-container" style={{position:"relative",paddingTop:"20px"}}>
                 <div className="flex-first">
                     <SelectTab items={getNamesOnly()} selectIndex={this.state.selectIndex} selectionChanged={(index)=>this.selectChanged(index)}/>
                 </div>

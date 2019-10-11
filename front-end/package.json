@@ -1,6 +1,6 @@
 {
   "name": "auxyin-front-end",
-  "version": "1.0.4",
+  "version": "1.1.1",
   "description": "The front end of AuxYin",
   "main": "index.js",
   "scripts": {
