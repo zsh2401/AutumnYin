@@ -30,7 +30,6 @@ export default class Discover extends React.Component{
                         <Button onClick={()=>{
                             localStorage.clear();
                             hs().push("/")
-                            // window.location.reload();
                         }} appearance="link">重置应用设置</Button>
                     </div>
                 </div>
@@ -53,8 +52,8 @@ interface ICardProps{
 }
 const Card = (props:ICardProps)=><div className="col-6" style={{padding:"10px"}}>
     <div className={"discover-card discover-card-" + (props.bgType || 0)} onClick={()=>props.onClick()}>
-    <h5>{props.title}</h5>
-    <p>{props.desc}</p>
-</div>
+        <h5>{props.title}</h5>
+        <p>{props.desc}</p>
+    </div>
 </div>
 

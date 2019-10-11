@@ -1,10 +1,11 @@
 import ReactDOM from 'react-dom'
 
-import "./App.css"
+
 
 import "rsuite/dist/styles/rsuite-default.min.css"
 import "./view/css/bs-simplex/_entry.scss"
 import "./lib/mescroll/index.css"
+import "./App.css"
 
 import "jquery"
 import "bootstrap"
