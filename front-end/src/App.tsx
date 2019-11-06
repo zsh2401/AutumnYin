@@ -1,14 +1,18 @@
 import ReactDOM from 'react-dom'
 
 
+import "jquery"
+
+import "bootstrap"
+import "./view/css/bs-simplex/_entry.scss"
 
 import "rsuite/dist/styles/rsuite-default.min.css"
-import "./view/css/bs-simplex/_entry.scss"
+
 import "./lib/mescroll/index.css"
+
 import "./App.css"
 
-import "jquery"
-import "bootstrap"
+
 
 import OfflinePluginRuntime from "offline-plugin/runtime"
 
