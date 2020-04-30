@@ -11,7 +11,7 @@
   "author": "zsh2401",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "leancloud-storage": "^3.15.0",
     "marked": "^0.7.0",
     "popper.js": "^1.15.0",
